@@ -1,0 +1,194 @@
+\documentclass[
+%paper=5.5in:8.5in,
+paper=a5,
+BCOR=7mm,
+twoside,
+DIV=calc,
+12pt,
+usegeometry,
+chapterprefix,
+headings=big]{scrbook} % Document font size and paper size
+
+\usepackage{graphicx}
+\usepackage{verse}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc} % International character encodings
+\usepackage{makeidx}
+\usepackage{lettrine}
+\usepackage{scrlayer-scrpage}
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[maxlevel=3]{csquotes}
+\usepackage[export]{adjustbox}
+\usepackage{polyglossia}
+\usepackage{afterpage}
+\usepackage{microtype}
+\usepackage{tocbasic}
+\usepackage[pass]{geometry}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{rotating}
+\usepackage[all]{nowidow}
+\usepackage{setspaceenhanced}
+\usepackage{ebgaramond} 
+\usepackage{epigraph}
+
+\newcount\zzc
+\makeatletter
+\def\zz{%
+\ifnum\prevgraf<\c@L@lines
+\zzc\z@
+\loop
+\ifnum\zzc<\prevgraf
+\advance\zzc\@ne
+\afterassignment\zzda\count@\L@parshape\relax
+\repeat
+\parshape\L@parshape
+\fi}
+\def\zzda{\afterassignment\zzdb\dimen@}
+\def\zzdb{\afterassignment\zzdef\dimen@}
+\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
+\makeatother
+
+\setmainfont{EB Garamond}
+\setdefaultlanguage[variant=uk]{english}
+\newcommand{\HUGE}{\fontsize{120}{130}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{60}{70}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
+\newfontfamily\chapterfont{EB Garamond}
+\newfontfamily\mytitlefont{riesling.ttf}
+\newfontfamily\lettrinefont{Decocaps.ttf}
+\renewcommand{\LettrineFontHook}{\fontspec{Decocaps.ttf}}
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
+\addtokomafont{disposition}{\normalfont}
+\setkomafont{part}{\chapterfont\HUGE\bfseries}
+\addtokomafont{partnumber}{\chapterfont\moderatelyhuge}
+\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
+\renewcommand*{\chapterformat}{\chaptername~\thechapter}
+
+
+\KOMAoption{toc}{flat}
+\newcommand*\hideentrynumber[1]{}
+\DeclareTOCStyleEntry[numwidth=0pt,entrynumberformat=\hideentrynumber,linefill=\TOCLineLeaderFill]{chapter}{chapter}
+
+\graphicspath{ {./images/} }
+
+\headsep=10pt
+\headheight=45pt
+\footskip=30pt
+
+\defaultfontfeatures{Ligatures=TeX}
+
+\automark{chapter}
+\lehead{Whose Body?}
+\rohead{Chapter \thechapter}
+\flushbottom
+
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
+\hyphenation{}
+
+
+\begin{document}
+\setlength{\epigraphwidth}{0.8\textwidth}
+\renewcommand{\epigraphflush}{center}
+\renewcommand{\sourceflush}{center}
+\renewcommand*{\chaptermarkformat}{}
+\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+\frontmatter
+\pagestyle{empty}
+\begin{titlepage}
+
+   \recalctypearea
+ \newgeometry{left=10mm,right=10mm,top=15mm, bottom=15mm}
+
+  \begin{center}\setstretch{1.8}\mytitlefont
+{\setstretch{1.8}\HUGE Whose}\\
+\vspace{0.5cm}
+{\HUGE Body?}\\
+\vfill
+\includegraphics[width=.5\linewidth]{shield25}\\
+\vfill
+\setstretch{1.5}\mytitlefont
+{\setstretch{1.5}\moderatelyhuge Dorothy L. Sayers}\\
+\end{center}
+
+
+%\begin{center}
+%\includegraphics[width=.85\linewidth]{titlecred}\\
+%\includegraphics[width=.4\linewidth]{decodesign}\\
+%\includegraphics[width=.9\linewidth]{authorcredit}\\
+%\end{center}
+\end{titlepage}
+
+
+\pagestyle{plain}
+
+\renewcommand*\raggedchapter{\centering}
+
+
+  \recalctypearea
+\restoregeometry
+\KOMAoptions{headings=openleft}
+%\footskip=20pt
+
+\tableofcontents
+\clearpage
+
+\chapter*{Dedication}
+~\\
+~\\
+\begin{center}
+To M. J.
+\end{center}
+
+\noindent Dear Jim:
+~\\
+
+This book is your fault. If it had not been for your brutal insistence, Lord Peter would never have staggered through to the end of this enquiry. Pray consider that he thanks you with his accustomed suavity.
+
+\begin{flushright}
+Yours ever,\\
+D. L. S.
+\end{flushright}
+
+\footskip=30pt
+
+\KOMAoptions{headings=openany}
+
+\mainmatter
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\KOMAoptions{headings=openright}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+\include{chapters/13.tex}
+
+
+
+\clearpage
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+\begin{center}
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16\textsuperscript{th} century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+\vfill
+Typeset in \LaTeX{}.
+\end{center}
+\thispagestyle{empty}
+\end{document}
