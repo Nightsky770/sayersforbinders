@@ -1,0 +1,254 @@
+\documentclass[
+%paper=5.5in:8.5in,
+a5paper,
+BCOR=7mm,
+twoside,
+DIV=calc,
+12pt,
+usegeometry,
+chapterprefix,
+headings=big]{scrbook} % Document font size and paper size
+
+\usepackage{graphicx}
+\usepackage{verse}
+\usepackage{xcolor}
+\usepackage[no-math]{fontspec}
+\usepackage[T1]{fontenc} % International character encodings
+\usepackage{makeidx}
+\usepackage{lettrine}
+\usepackage{scrlayer-scrpage}
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[maxlevel=3]{csquotes}
+\usepackage[export]{adjustbox}
+\usepackage{polyglossia}
+\usepackage{afterpage}
+\usepackage{microtype}
+\usepackage{tocbasic}
+\usepackage[pass]{geometry}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage[figuresright]{rotating}
+\usepackage[all]{nowidow}
+\usepackage{setspaceenhanced}
+\usepackage{ebgaramond} 
+\usepackage{epigraph}
+\usepackage{dialogue}
+
+\MakeAutoQuote{»}{«}
+
+\setmainfont{EB Garamond}
+\setdefaultlanguage[variant=uk]{english}
+\setotherlanguage{french}
+
+\newcommand{\HUGEafive}{\fontsize{50}{60}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{40}{50}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
+\newfontfamily\chapterfont{EB Garamond}
+\newfontfamily\lettrinefont{Decocaps.ttf}
+\renewcommand{\LettrineFontHook}{\fontspec{Decocaps.ttf}}
+%\input Kramer.fd
+%\newcommand*\initfamily{\usefont{U}{Kramer}{xl}{n}}
+%\newfontfamily\lettrinefont{Kramer}
+%\renewcommand{\LettrineFontHook}{\fontspec{Kramer}}
+\newfontfamily\mytitlefont{SeasideResortNF.ttf}
+\newfontfamily\myauthorfont{EB Garamond}
+
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+  \def\coverimagesize{0.6\linewidth}
+  \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+}{%
+    \def\coverimagesize{0.7\linewidth}
+  \newcommand{\HUGE}{\fontsize{60}{70}\selectfont}
+}
+\makeatother
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
+\addtokomafont{disposition}{\normalfont}
+\setkomafont{part}{\chapterfont\HUGE\bfseries}
+\addtokomafont{partnumber}{\chapterfont\moderatelyhuge}
+\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
+\renewcommand*{\chapterformat}{\chaptername~\thechapter}
+\newcommand*\hideentrynumber[1]{}
+
+\graphicspath{ {./images/} }
+\captionsetup[figure]{font=sc,labelformat=empty}
+
+
+\newcount\zzc
+\makeatletter
+\def\zz{%
+\ifnum\prevgraf<\c@L@lines
+\zzc\z@
+\loop
+\ifnum\zzc<\prevgraf
+\advance\zzc\@ne
+\afterassignment\zzda\count@\L@parshape\relax
+\repeat
+\parshape\L@parshape
+\fi}
+\def\zzda{\afterassignment\zzdb\dimen@}
+\def\zzdb{\afterassignment\zzdef\dimen@}
+\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
+\makeatother
+
+\BeforeTOCHead[toc]{%
+%  \KOMAoptions{parskip=false}% no parskip in ToC
+%  \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
+\DeclareTOCStyleEntry[beforeskip=0.2cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
+}
+
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
+\headsep=10pt
+\headheight=45pt
+\footskip=30pt
+
+\defaultfontfeatures{Ligatures=TeX}
+
+\automark{chapter}
+\lehead{Clouds of Witness}
+\rohead{Chapter \thechapter: \leftmark}
+\flushbottom
+
+
+
+\hyphenation{}
+
+
+\begin{document}
+\setlength{\epigraphwidth}{0.8\textwidth}
+\renewcommand{\epigraphflush}{center}
+\renewcommand{\sourceflush}{center}
+\renewcommand*{\chaptermarkformat}{}
+\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+\frontmatter
+\pagestyle{empty}
+\begin{titlepage}
+   \recalctypearea
+ \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
+
+  \begin{center}\setstretch{1.8}\mytitlefont
+{\setstretch{1.8}\HUGE Clouds}\\
+\vspace{0.5cm}
+{\setstretch{1.8}\moderatelyhuge of}\\
+\vspace{0.2cm}
+{\HUGE Witness}\\
+\vspace*{.5cm}
+\includegraphics[width=\coverimagesize]{villa}\\
+ \end{center}
+ \vspace*{.1cm}
+ \begin{center}\setstretch{1.5}\myauthorfont
+{\setstretch{1.5}\reasonablyhuge Dorothy L. Sayers}\\
+\end{center}
+  \end{titlepage}
+
+
+\pagestyle{plain}
+
+\renewcommand*\raggedchapter{\centering}
+
+
+  \recalctypearea
+\restoregeometry
+\KOMAoptions{headings=openany}
+\begin{center}\setstretch{1.8}\scshape\bfseries
+{\Large The Solution of}\\
+%\vspace{0.5cm}
+{\Large The Riddlesdale Mystery}\\
+
+{\Large With}\\
+
+{\Large A Report}\\
+
+{\Large Of the Trial of}\\
+
+{\Large The Duke of Denver}\\
+
+{\Large Before the House of Lords}\\
+
+{\Large For}\\
+
+{\Large Murder}\\
+\end{center}
+\vfill
+\begin{quote}
+The inimitable stories of Tong-king never have any real ending, and this one, being in his most elevated style, has even less end than most of them. But the whole narrative is permeated with the odour of joss-sticks and honourable high-mindedness, and the two characters are both of noble birth.\\
+
+\textit{The Wallet of Kai-Lung}
+\end{quote}
+\clearpage
+
+%\KOMAoptions{headings=openleft}
+%\footskip=20pt
+
+\tableofcontents
+\clearpage
+
+
+\begin{sidewaysfigure}
+\includegraphics[width=0.9\columnwidth]{groundfloorlabeled}%
+\caption{Riddlesdale Lodge: Ground Floor}
+\addcontentsline{toc}{chapter}{Riddlesdale Lodge: Plan of ground floor}
+\end{sidewaysfigure}
+
+\clearpage
+
+\begin{sidewaysfigure}
+\includegraphics[width=\columnwidth]{secondfloorlabeled}%
+\caption{Riddlesdale Lodge: Second Floor}
+\addcontentsline{toc}{chapter}{Riddlesdale Lodge: Plan of second floor}
+\end{sidewaysfigure}
+
+%\clearpage
+
+
+
+\footskip=30pt
+
+
+
+\mainmatter
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\KOMAoptions{headings=openright}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+\include{chapters/13.tex}
+\include{chapters/14.tex}
+\include{chapters/15.tex}
+\include{chapters/16.tex}
+\include{chapters/17.tex}
+\include{chapters/18.tex}
+\include{chapters/19.tex}
+
+
+
+\clearpage
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+\begin{center}
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+\vfill
+Title page illustration is cropped from »La Villa d'Este«, a 1923 painting by French artist George Barbier (1882–1932). The original is held by the Rijksmuseum in Amsterdam.
+\vfill
+Typeset in \LaTeX{}.
+\end{center}
+\thispagestyle{empty}
+\end{document}
