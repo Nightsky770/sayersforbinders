@@ -42,7 +42,6 @@ headings=big]{scrbook} % Document font size and paper size
 \setdefaultlanguage[variant=uk]{english}
 \setotherlanguage{french}
 
-\newcommand{\HUGEafive}{\fontsize{50}{60}\selectfont}
 \newcommand{\moderatelyhuge}{\fontsize{40}{50}\selectfont}
 \newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
 \newfontfamily\chapterfont{EB Garamond}
@@ -58,10 +57,10 @@ headings=big]{scrbook} % Document font size and paper size
 \makeatletter
 \@ifclasswith{scrbook}{a5paper}
 {%
-  \def\coverimagesize{0.6\linewidth}
+  \def\coverimagesize{0.7\linewidth}
   \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
 }{%
-    \def\coverimagesize{0.7\linewidth}
+    \def\coverimagesize{0.8\linewidth}
   \newcommand{\HUGE}{\fontsize{60}{70}\selectfont}
 }
 \makeatother
@@ -140,7 +139,7 @@ headings=big]{scrbook} % Document font size and paper size
 \vspace{0.2cm}
 {\HUGE Witness}\\
 \vspace*{.5cm}
-\includegraphics[width=\coverimagesize]{villa}\\
+\includegraphics[width=\coverimagesize]{casino}\\
  \end{center}
  \vspace*{.1cm}
  \begin{center}\setstretch{1.5}\myauthorfont
@@ -246,7 +245,7 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \begin{center}
 EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
 \vfill
-Title page illustration is cropped from »La Villa d'Este«, a 1923 painting by French artist George Barbier (1882–1932). The original is held by the Rijksmuseum in Amsterdam.
+Title page illustration is cropped from »Le Départ au Casino«, a 1923 painting by French artist George Barbier (1882–1932). The original is held by the Rijksmuseum in Amsterdam.
 \vfill
 Typeset in \LaTeX{}.
 \end{center}
