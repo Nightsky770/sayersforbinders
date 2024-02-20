@@ -1,6 +1,6 @@
 \documentclass[
-%paper=5.5in:8.5in,
-paper=a5,
+paper=5.5in:8.5in,
+%a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
@@ -34,6 +34,9 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{setspaceenhanced}
 \usepackage{ebgaramond} 
 \usepackage{epigraph}
+\usepackage{dialogue}
+
+\MakeAutoQuote{»}{«}
 
 \newcount\zzc
 \makeatletter
@@ -54,9 +57,9 @@ headings=big]{scrbook} % Document font size and paper size
 
 \setmainfont{EB Garamond}
 \setdefaultlanguage[variant=uk]{english}
-\newcommand{\HUGE}{\fontsize{120}{130}\selectfont}
+\setotherlanguage{french}
 \newcommand{\moderatelyhuge}{\fontsize{60}{70}\selectfont}
-\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{50}{60}\selectfont}
 \newfontfamily\chapterfont{EB Garamond}
 \newfontfamily\mytitlefont{riesling.ttf}
 \newfontfamily\lettrinefont{Decocaps.ttf}
@@ -91,6 +94,17 @@ headings=big]{scrbook} % Document font size and paper size
 
 \hyphenation{}
 
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+  \def\coverimagesize{.5\linewidth}
+  \newcommand{\HUGE}{\fontsize{90}{90}\selectfont}
+}{%
+    \def\coverimagesize{0.55\linewidth}
+  \newcommand{\HUGE}{\fontsize{90}{90}\selectfont}
+}
+\makeatother
+
 
 \begin{document}
 \setlength{\epigraphwidth}{0.8\textwidth}
@@ -105,17 +119,17 @@ headings=big]{scrbook} % Document font size and paper size
 \begin{titlepage}
 
    \recalctypearea
- \newgeometry{left=10mm,right=10mm,top=15mm, bottom=15mm}
+ \newgeometry{left=10mm,right=10mm,top=10mm, bottom=10mm}
 
   \begin{center}\setstretch{1.8}\mytitlefont
-{\setstretch{1.8}\HUGE Whose}\\
+{\setstretch{1.8}\HUGE Whose Body?}\\
+%\vspace{0.5cm}
+%{\HUGE Body?}\\
+\vspace{0.2cm}
+\includegraphics[width=\coverimagesize]{dude}\\
 \vspace{0.5cm}
-{\HUGE Body?}\\
-\vfill
-\includegraphics[width=.5\linewidth]{shield25}\\
-\vfill
 \setstretch{1.5}\mytitlefont
-{\setstretch{1.5}\moderatelyhuge Dorothy L. Sayers}\\
+{\setstretch{1.5}\reasonablyhuge Dorothy L. Sayers}\\
 \end{center}
 
 
@@ -138,7 +152,9 @@ headings=big]{scrbook} % Document font size and paper size
 %\footskip=20pt
 
 \tableofcontents
-\clearpage
+%\clearpage
+
+\KOMAoptions{headings=openright}
 
 \chapter*{Dedication}
 ~\\
@@ -159,13 +175,12 @@ D. L. S.
 
 \footskip=30pt
 
-\KOMAoptions{headings=openany}
 
 \mainmatter
 \pagestyle{headings}
 \renewcommand*{\chapterpagestyle}{plain}
 
-\KOMAoptions{headings=openright}
+
 \include{chapters/01.tex}
 \include{chapters/02.tex}
 \include{chapters/03.tex}
@@ -187,6 +202,12 @@ D. L. S.
 \chapter*{Colophon}
 \begin{center}
 EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16\textsuperscript{th} century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+\vfill
+Title is set in »Riesling«, by Bright Ideas Foundry.
+\vfill
+Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
+\vfill
+Title page illustration is cropped from an anonymous 1920 engraving appearing in the fashion magazine \foreignquote{french}{Le Goût du Jour}. The original is held by the Rijksmuseum in Amsterdam.
 \vfill
 Typeset in \LaTeX{}.
 \end{center}
