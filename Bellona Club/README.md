@@ -5,11 +5,6 @@ CW: PTSD (main and secondary characters), misogyny, use of ethnic slur "gypsy" (
 
 If you are using US letter paper (8.5" x 11"), download the "Letter" folder containing the signatures and print them out, double-sided, flip on short side.
 
-If you are using A4, download the "A4" folder containing the signatures and print them out, double-sided, flip on short side.
+If you are using A4 paper, download the "A4" folder containing the signatures and print them out, double-sided, flip on short side.
 
-TeX originals are in the source folder.
-
-Fonts used are:
-* EB Garamond: https://www.1001freefonts.com/eb-garamond.font
-* Gramophone Gramophone Shaded: https://www.1001fonts.com/gramophone-font.html
-* Deco Caps: https://www.dafont.com/deco-caps.font
+"Source" directory holds the TeX source files, image files, and other under-the-hood information. You do not need it if you are just printing out for binding; you only need it if you want to make your own custom versions.
