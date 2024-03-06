@@ -4,7 +4,7 @@ a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
-12pt,
+11pt,
 usegeometry,
 chapterprefix,
 headings=big]{scrbook} % Document font size and paper size
@@ -34,8 +34,12 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{setspaceenhanced}
 \usepackage{ebgaramond} 
 \usepackage{epigraph}
+\usepackage{ellipsis}
 
 \MakeAutoQuote{»}{«}
+\catcode`\—=13
+\protected\def—{\allowbreak\textemdash\allowbreak}
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
 \setmainfont{EB Garamond}
 \setdefaultlanguage[variant=uk]{english}
@@ -109,7 +113,7 @@ headings=big]{scrbook} % Document font size and paper size
 
 
 \hyphenation{}
-\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
 
 \begin{document}
 %\setlength{\epigraphwidth}{0.8\textwidth}
@@ -206,11 +210,11 @@ headings=big]{scrbook} % Document font size and paper size
 \begin{center}
 EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
 \vfill
-Title is set in »Raconteur NF«, by Nick Curtis.\\fontspace.com/nicks-fonts
+Title is set in »Raconteur NF«, by Nick Curtis.\\www.nicksfonts.com
 \vfill
 Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
 \vfill
-Title page decoration is from an anonymous illustration entitled \foreignquote{french}{Le Jardin d'Hiver du Ritz}, which appeared in the January 1924 issue of the fashion magazine \foreignquote{french}{Art - Goût - Beauté: Feuillets de l'élégance féminine}. The original is held by the Rijksmuseum in Amsterdam.
+Title page decoration is from an illustration entitled \foreignquote{french}{Le Jardin d'Hiver du Ritz}, which appeared in the January 1924 issue of the French fashion magazine \foreignquote{french}{Art - Goût - Beauté: Feuillets de l'élégance féminine}. The original is held by the Rijksmuseum in Amsterdam.
 \vfill
 Typeset in \LaTeX{}.
 \end{center}
