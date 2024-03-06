@@ -1,10 +1,10 @@
 \documentclass[
-%paper=5.5in:8.5in,
-a5paper,
+paper=5.5in:8.5in,
+%a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
-12pt,
+11pt,
 usegeometry,
 chapterprefix,
 headings=big]{scrbook} % Document font size and paper size
@@ -37,6 +37,9 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{dialogue}
 
 \MakeAutoQuote{»}{«}
+\catcode`\—=13
+\protected\def—{\allowbreak\textemdash\allowbreak}
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
 \setmainfont{EB Garamond}
 \setdefaultlanguage[variant=uk]{english}
@@ -99,8 +102,6 @@ headings=big]{scrbook} % Document font size and paper size
 %  \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
 \DeclareTOCStyleEntry[beforeskip=0.2cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
 }
-
-\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
 \headsep=10pt
 \headheight=45pt
@@ -244,6 +245,10 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \chapter*{Colophon}
 \begin{center}
 EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+\vfill
+Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
+\vfill
+Title is set in »Seaside Resort«, by Nick Curtis, based on a 1933 poster by Italy’s Bertarelli Studios.\\www.nicksfonts.com
 \vfill
 Title page illustration is cropped from »Le Départ au Casino«, a 1923 painting by French artist George Barbier (1882–1932). The original is held by the Rijksmuseum in Amsterdam.
 \vfill
