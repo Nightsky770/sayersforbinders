@@ -1,10 +1,10 @@
 \documentclass[
-paper=5.5in:8.5in,
-%a5paper,
+%paper=5.5in:8.5in,
+a5paper,
 BCOR=7mm,
 twoside,
 DIV=calc,
-12pt,
+11pt,
 usegeometry,
 chapterprefix,
 headings=big]{scrbook} % Document font size and paper size
@@ -37,6 +37,9 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{dialogue}
 
 \MakeAutoQuote{»}{«}
+\catcode`\—=13
+\protected\def—{\allowbreak\textemdash\allowbreak}
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
 \newcount\zzc
 \makeatletter
@@ -90,7 +93,7 @@ headings=big]{scrbook} % Document font size and paper size
 \rohead{Chapter \thechapter}
 \flushbottom
 
-\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
 
 \hyphenation{}
 
