@@ -36,15 +36,19 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{ellipsis}
 \usepackage{makecell}
 \usepackage{longtable}
+\usepackage{floatpag}
 
 \MakeAutoQuote{»}{«}
 \catcode`\—=13
 \protected\def—{\allowbreak\textemdash\allowbreak}
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
-\setmainfont{EB Garamond}
+\setmainfont{EB Garamond}[UprightFeatures={CharacterVariant=11}]
 \setdefaultlanguage[variant=uk]{english}
 \setotherlanguage{french}
+
+\floatpagestyle{empty}
+\rotfloatpagestyle{empty}
 
 \newcommand{\HUGE}{\fontsize{70}{80}\selectfont}
 \newcommand{\moderatelyhuge}{\fontsize{35}{45}\selectfont}
