@@ -8,7 +8,13 @@ Originally published in 1928, these 12 short stories see Lord Peter:
 * face down impostors
 * and more!
 
-CW: Misogyny; antisemetic stereotypes; use of ethnic slurs "gypsy" and "dago" (uncensored); maritial infidelity; blackmail; murder (a couple of which are especially gruesome).
+I have redrafted the crossword puzzle (and its solution) from "The Fascinating Problem of Uncle Meleager's Will", and the map from "The Undignified Melodrama of the Bone of Contention", in Inkscape (files are in source/images) and created both labeled and blank versions. This is my original work, based on Sayers' public domain original, and I place it into the public domain.
+
+Emendations:
+* In "The Unprincipled Affair of the Practical Joker", I have changed "Attenbury diamond case" to "Attenbury emerald case", as Sayers is consistent elsewhere that it was emeralds.
+
+
+CW: Misogyny; antisemetic stereotypes; use of ethnic slurs "gypsy" and "dago" (uncensored); domestic violence; maritial infidelity; blackmail; murder (a couple of which are especially gruesome).
 
 If you are using US letter paper (8.5" x 11"), download the "Letter" folder containing the signatures and print them out, double-sided, flip on short side.
 
