@@ -12,7 +12,7 @@ If the odour of kidneys and bacon had been wafted along the wire, Mr Parker coul
 
 »You can take the porridge home for the family,« he added, viciously, and flung off his dressing-gown with such determination that Mrs Munns could only scuttle away with a snort.
 
-A 19 'bus deposited him in Piccadilly only fifteen minutes later than his rather sanguine impulse had prompted him to suggest, and Mr Bunter served him with glorious food, incomparable coffee, and the \textit{Daily Mail} before a blazing fire of wood and coal. A distant voice singing the »et iterum venturus est« from Bach's \textit{Mass in B minor} proclaimed that for the owner of the flat cleanliness and godliness met at least once a day, and presently Lord Peter roamed in, moist and verbena-scented, in a bath-robe cheerfully patterned with unnaturally variegated peacocks.
+A 19 `bus deposited him in Piccadilly only fifteen minutes later than his rather sanguine impulse had prompted him to suggest, and Mr Bunter served him with glorious food, incomparable coffee, and the \textit{Daily Mail} before a blazing fire of wood and coal. A distant voice singing the »et iterum venturus est« from Bach's \textit{Mass in B minor} proclaimed that for the owner of the flat cleanliness and godliness met at least once a day, and presently Lord Peter roamed in, moist and verbena-scented, in a bath-robe cheerfully patterned with unnaturally variegated peacocks.
 
 »Mornin', old dear,« said that gentleman. »Beast of a day, ain't it? Very good of you to trundle out in it, but I had a letter I wanted you to see, and I hadn't the energy to come round to your place. Bunter and I've been makin' a night of it.«
 
@@ -75,10 +75,20 @@ He detailed to Mr Parker his day's work.
 »Ah, that's the letter I mentioned to you. Where did I put it? Here we are. Good parchment paper, printed address of solicitor's office in Salisbury, and postmark to correspond. Very precisely written with a fine nib by an elderly business man of old-fashioned habits.«
 
 Parker took the letter and read:
+
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+\clearpage
+}{%
+
+}
+\makeatother
+
 \begin{quotation}
 \begin{flushright}
 \hfill
-\begin{minipage}{0.6\linewidth}
+\begin{minipage}{0.5\linewidth}
 \textsc{Crimplesham and Wicks,}\\
 \vin \textit{Solicitors,}\\
 \textsc{Milford Hill, Salisbury,}\\
@@ -86,9 +96,9 @@ Parker took the letter and read:
 \end{minipage}
 \end{flushright}
 
-\noindent Sir,
+\noindent \textsc{Sir,}
 
-With reference to your advertisement today in the personal column of \textit{The Times}, I am disposed to believe that the eyeglasses and chain in question may be those I lost on the L. B. \& S. C. Electric Railway while visiting London last Monday. I left Victoria by the 5.45 train, and did not notice my loss till I arrived at Balham. This indication and the optician's specification of the glasses, which I enclose, should suffice at once as an identification and a guarantee of my bona fides. If the glasses should prove to be mine, I should be greatly obliged to you if you would kindly forward them to me by registered post, as the chain was a present from my daughter, and is one of my dearest possessions.
+With reference to your advertisement today in the personal column of \textit{The Times}, I am disposed to believe that the eyeglasses and chain in question may be those I lost on the \textsc{l.b.\&s.c.} Electric Railway while visiting London last Monday. I left Victoria by the 5.45 train, and did not notice my loss till I arrived at Balham. This indication and the optician's specification of the glasses, which I enclose, should suffice at once as an identification and a guarantee of my bona fides. If the glasses should prove to be mine, I should be greatly obliged to you if you would kindly forward them to me by registered post, as the chain was a present from my daughter, and is one of my dearest possessions.
 
 Thanking you in advance for this kindness, and regretting the trouble to which I shall be putting you, I am,
 
@@ -104,7 +114,7 @@ Yours very truly,\\
 
 »Dear me,« said Parker, »this is what you might call unexpected.«
 
-»Either it is some extraordinary misunderstanding,« said Lord Peter, »or Mr Crimplesham is a very bold and cunning villain. Or possibly, of course, they are the wrong glasses. We may as well get a ruling on that point at once. I suppose the glasses are at the Yard. I wish you'd just ring 'em up and ask 'em to send round an optician's description of them at once—and you might ask at the same time whether it's a very common prescription.«
+»Either it is some extraordinary misunderstanding,« said Lord Peter, »or Mr Crimplesham is a very bold and cunning villain. Or possibly, of course, they are the wrong glasses. We may as well get a ruling on that point at once. I suppose the glasses are at the Yard. I wish you'd just ring `em up and ask `em to send round an optician's description of them at once—and you might ask at the same time whether it's a very common prescription.«
 
 »Right you are,« said Parker, and took the receiver off its hook.
 
@@ -112,7 +122,7 @@ Yours very truly,\\
 
 On the library table, Lord Peter had spread out a series of bromide prints, some dry, some damp, and some but half-washed.
 
-»These little ones are the originals of the photos we've been taking,« said Lord Peter, »and these big ones are enlargements all made to precisely the same scale. This one here is the footmark on the linoleum; we'll put that by itself at present. Now these finger-prints can be divided into five lots. I've numbered 'em on the prints—see?---and made a list:
+»These little ones are the originals of the photos we've been taking,« said Lord Peter, »and these big ones are enlargements all made to precisely the same scale. This one here is the footmark on the linoleum; we'll put that by itself at present. Now these finger-prints can be divided into five lots. I've numbered `em on the prints—see?---and made a list:
 
 \textsc{A.} The finger-prints of Levy himself, off his little bedside book and his hair-brush—this and this—you can't mistake the little scar on the thumb.
 
@@ -152,9 +162,9 @@ The note from Scotland Yard enclosed an optician's specification identical with 
 
 »That's good enough,« said Parker.
 
-»Yes,« said Wimsey. »Then Possibility № 3 is knocked on the head. There remain Possibility № 1: Accident or Misunderstanding, and № 2: Deliberate Villainy, of a remarkably bold and calculating kind—of a kind, in fact, characteristic of the author or authors of our two problems. Following the methods inculcated at that University of which I have the honour to be a member, we will now examine severally the various suggestions afforded by Possibility № 2. This Possibility may be again subdivided into two or more Hypotheses. On Hypothesis 1 (strongly advocated by my distinguished colleague Professor Snupshed), the criminal, whom we may designate as X, is not identical with Crimplesham, but is using the name of Crimplesham as his shield, or aegis. This hypothesis may be further subdivided into two alternatives. Alternative A: Crimplesham is an innocent and unconscious accomplice, and X is in his employment. X writes in Crimplesham's name on Crimplesham's office-paper and obtains that the object in question, i.e., the eyeglasses, be despatched to Crimplesham's address. He is in a position to intercept the parcel before it reaches Crimplesham. The presumption is that X is Crimplesham's charwoman, office-boy, clerk, secretary or porter. This offers a wide field of investigation. The method of inquiry will be to interview Crimplesham and discover whether he sent the letter, and if not, who has access to his correspondence. Alternative B: Crimplesham is under X's influence or in his power, and has been induced to write the letter by (\textit{a}) bribery, (\textit{b}) misrepresentation or (\textit{c}) threats. X may in that case be a persuasive relation or friend, or else a creditor, blackmailer or assassin; Crimplesham, on the other hand, is obviously venal or a fool. The method of inquiry in this case, I would tentatively suggest, is again to interview Crimplesham, put the facts of the case strongly before him, and assure him in the most intimidating terms that he is liable to a prolonged term of penal servitude as an accessory after the fact in the crime of murder--- Ah-hem! Trusting, gentlemen, that you have followed me thus far, we will pass to the consideration of Hypothesis № 2, to which I personally incline, and according to which X is identical with Crimplesham.«
+»Yes,« said Wimsey. »Then Possibility № 3 is knocked on the head. There remain Possibility № 1: Accident or Misunderstanding, and № 2: Deliberate Villainy, of a remarkably bold and calculating kind—of a kind, in fact, characteristic of the author or authors of our two problems. Following the methods inculcated at that University of which I have the honour to be a member, we will now examine severally the various suggestions afforded by Possibility № 2. This Possibility may be again subdivided into two or more Hypotheses. On Hypothesis 1 (strongly advocated by my distinguished colleague Professor Snupshed), the criminal, whom we may designate as X, is not identical with Crimplesham, but is using the name of Crimplesham as his shield, or aegis. This hypothesis may be further subdivided into two alternatives. Alternative A: Crimplesham is an innocent and unconscious accomplice, and X is in his employment. X writes in Crimplesham's name on Crimplesham's office-paper and obtains that the object in question, i.e., the eyeglasses, be despatched to Crimplesham's address. He is in a position to intercept the parcel before it reaches Crimplesham. The presumption is that X is Crimplesham's charwoman, office-boy, clerk, secretary or porter. This offers a wide field of investigation. The method of inquiry will be to interview Crimplesham and discover whether he sent the letter, and if not, who has access to his correspondence. Alternative B: Crimplesham is under X's influence or in his power, and has been induced to write the letter by (\textit{a}) bribery, (\textit{b}) misrepresentation or (\textit{c}) threats. X may in that case be a persuasive relation or friend, or else a creditor, blackmailer or assassin; Crimplesham, on the other hand, is obviously venal or a fool. The method of inquiry in this case, I would tentatively suggest, is again to interview Crimplesham, put the facts of the case strongly before him, and assure him in the most intimidating terms that he is liable to a prolonged term of penal servitude as an accessory after the fact in the crime of murder— Ah-hem! Trusting, gentlemen, that you have followed me thus far, we will pass to the consideration of Hypothesis № 2, to which I personally incline, and according to which X is identical with Crimplesham.«
 
-»In this case, Crimplesham, who is, in the words of an English classic, a man-of-infinite-resource-and-sagacity, correctly deduces that, of all people, the last whom we shall expect to find answering our advertisement is the criminal himself. Accordingly, he plays a bold game of bluff. He invents an occasion on which the glasses may very easily have been lost or stolen, and applies for them. If confronted, nobody will be more astonished than he to learn where they were found. He will produce witnesses to prove that he left Victoria at 5.45 and emerged from the train at Balham at the scheduled time, and sat up all Monday night playing chess with a respectable gentleman well known in Balham. In this case, the method of inquiry will be to pump the respectable gentleman in Balham, and if he should happen to be a single gentleman with a deaf housekeeper, it may be no easy matter to impugn the alibi, since, outside detective romances, few ticket-collectors and 'bus-conductors keep an exact remembrance of all the passengers passing between Balham and London on any and every evening of the week.«
+»In this case, Crimplesham, who is, in the words of an English classic, a man-of-infinite-resource-and-sagacity, correctly deduces that, of all people, the last whom we shall expect to find answering our advertisement is the criminal himself. Accordingly, he plays a bold game of bluff. He invents an occasion on which the glasses may very easily have been lost or stolen, and applies for them. If confronted, nobody will be more astonished than he to learn where they were found. He will produce witnesses to prove that he left Victoria at 5.45 and emerged from the train at Balham at the scheduled time, and sat up all Monday night playing chess with a respectable gentleman well known in Balham. In this case, the method of inquiry will be to pump the respectable gentleman in Balham, and if he should happen to be a single gentleman with a deaf housekeeper, it may be no easy matter to impugn the alibi, since, outside detective romances, few ticket-collectors and `bus-conductors keep an exact remembrance of all the passengers passing between Balham and London on any and every evening of the week.«
 
 »Finally, gentlemen, I will frankly point out the weak point of all these hypotheses, namely: that none of them offers any explanation as to why the incriminating article was left so conspicuously on the body in the first instance.«
 
@@ -264,7 +274,7 @@ The lawyer looked puzzled.
 
 Lord Peter hesitated.
 
-»Pray forgive my seeming inquisitiveness,« he said, »but I must ask you another question. It sounds rather melodramatic, I'm afraid, but it's this. Are you aware that you have any enemy—anyone, I mean, who would profit by your—er---decease or disgrace?«
+»Pray forgive my seeming inquisitiveness,« he said, »but I must ask you another question. It sounds rather melodramatic, I'm afraid, but it's this. Are you aware that you have any enemy—anyone, I mean, who would profit by your—er—decease or disgrace?«
 
 Mr Crimplesham sat frozen into stony surprise and disapproval.
 
