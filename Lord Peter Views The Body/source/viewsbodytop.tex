@@ -1,0 +1,208 @@
+\documentclass[
+a5paper,
+%paper=5.5in:8.5in,
+BCOR=7mm,
+twoside,
+DIV=calc,
+11pt,
+usegeometry,
+headings=big]{scrbook} % Document font size and paper size
+
+\usepackage{graphicx}
+\usepackage{verse}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc} % International character encodings
+\usepackage{makeidx}
+\usepackage{lettrine}
+\usepackage{scrlayer-scrpage}
+\usepackage{pifont}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage[maxlevel=3]{csquotes}
+\usepackage[export]{adjustbox}
+\usepackage{polyglossia}
+\usepackage{afterpage}
+\usepackage{microtype}
+\usepackage{tocbasic}
+\usepackage[pass]{geometry}
+\usepackage{setspace}
+\usepackage{subfiles}
+\usepackage{rotating}
+\usepackage[all]{nowidow}
+\usepackage{setspaceenhanced}
+\usepackage{ebgaramond} 
+\usepackage{epigraph}
+\usepackage{ellipsis}
+\usepackage{makecell}
+\usepackage{longtable}
+
+\MakeAutoQuote{»}{«}
+\catcode`\—=13
+\protected\def—{\allowbreak\textemdash\allowbreak}
+\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
+
+\setmainfont{EB Garamond}
+\setdefaultlanguage[variant=uk]{english}
+\setotherlanguage{french}
+
+\newcommand{\HUGE}{\fontsize{70}{80}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{35}{45}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{50}{60}\selectfont}
+\newfontfamily\chapterfont{EB Garamond}
+%\newfontfamily\mytitlefont{GramophoneShadedNF.ttf}
+%\newfontfamily\myauthorfont{Gramophone.NF.ttf}
+\newfontfamily\mytitlefont{riesling.ttf}
+\newfontfamily\myauthorfont{riesling.ttf}
+
+\newfontfamily\lettrinefont{Decocaps.ttf}
+\renewcommand{\LettrineFontHook}{\fontspec{Decocaps.ttf}}
+
+\setkomafont{chapter}{\chapterfont\Huge\bfseries}
+\addtokomafont{disposition}{\normalfont}
+%\setkomafont{part}{\chapterfont\HUGE\bfseries}
+%\addtokomafont{partnumber}{\chapterfont\moderatelyhuge}
+%\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
+\renewcommand*{\chapterformat}{\chaptername~\thechapter}
+%\newcommand*\hideentrynumber[1]{}
+
+\makeatletter
+\@ifclasswith{scrbook}{a5paper}
+{%
+  \def\coverimagesize{0.7\linewidth}
+%  \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+}{%
+    \def\coverimagesize{0.8\linewidth}
+%  \newcommand{\HUGE}{\fontsize{60}{70}\selectfont}
+}
+\makeatother
+
+\newcount\zzc
+\makeatletter
+\def\zz{%
+\ifnum\prevgraf<\c@L@lines
+\zzc\z@
+\loop
+\ifnum\zzc<\prevgraf
+\advance\zzc\@ne
+\afterassignment\zzda\count@\L@parshape\relax
+\repeat
+\parshape\L@parshape
+\fi}
+\def\zzda{\afterassignment\zzdb\dimen@}
+\def\zzdb{\afterassignment\zzdef\dimen@}
+\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
+\makeatother
+
+\BeforeTOCHead[toc]{%
+  \KOMAoptions{parskip=false}% no parskip in ToC
+%  \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
+\DeclareTOCStyleEntry[beforeskip=0.5cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
+}
+
+\headsep=10pt
+\headheight=45pt
+\footskip=30pt
+
+\defaultfontfeatures{Ligatures=TeX}
+
+\automark{chapter}
+\lehead{Lord Peter Views The Body}
+\rohead{\leftmark}
+\flushbottom
+
+\graphicspath{ {./images/} }
+
+
+\hyphenation{}
+
+
+\begin{document}
+%\setlength{\epigraphwidth}{0.8\textwidth}
+%\renewcommand{\epigraphflush}{center}
+%\renewcommand{\sourceflush}{center}
+%\renewcommand*{\chaptermarkformat}{}
+%\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+%\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+\frontmatter
+\pagestyle{empty}
+\begin{titlepage}
+   \recalctypearea
+ \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
+
+  \begin{center}\setstretch{1.8}\mytitlefont
+{\setstretch{1.8}\HUGE Lord Peter}\\
+\vspace{0.5cm}
+{\setstretch{1.8}\HUGE Views The Body}\\
+\vspace*{.5cm}
+\includegraphics[width=\coverimagesize]{summer1923}\\
+ \end{center}
+ \vspace*{.1cm}
+ \begin{center}\setstretch{1.5}\myauthorfont
+{\setstretch{1.5}\reasonablyhuge Dorothy L. Sayers}\\
+\end{center}
+\end{titlepage}
+
+  \recalctypearea
+\restoregeometry
+
+
+
+\pagestyle{plain}
+
+\renewcommand*\raggedchapter{\centering}
+
+
+
+\KOMAoptions{headings=openleft}
+
+
+%\vspace*{-2\baselineskip}
+\tableofcontents
+\clearpage
+
+
+%\clearpage
+
+
+
+
+
+
+\mainmatter
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\KOMAoptions{headings=openright}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+\include{chapters/13.tex}
+
+
+\clearpage
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+\begin{center}
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+\vfill
+Title page is set in »Riesling«, by Bright Ideas Foundry.
+\vfill
+Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
+\vfill
+Title page illustration is from a fashion plate entitled \foreignquote{french}{Été 1923, No. 53}. The original is held by the Rijksmuseum in Amsterdam.
+\vfill
+Typeset in \LaTeX{}.
+\end{center}
+\thispagestyle{empty}
+\end{document}
