@@ -1,14 +1,7 @@
 # sayersforbinders
-Originally published in 1928, these 12 short stories see Lord Peter:
-* find missing wills (twice)
-* encounter ghosts (possibly)
-* babysit his nephew
-* solve a crossword puzzle
-* find pirate treasure
-* face down impostors
-* and more!
+The Unpleasantness at the Bellona Club
 
-CW: Misogyny; antisemetic stereotypes; use of ethnic slurs "gypsy" and "dago" (uncensored); maritial infidelity; blackmail; murder (a couple of which are especially gruesome).
+CW: PTSD (main and secondary characters), misogyny, use of ethnic slur "gypsy" (uncensored), murder.
 
 If you are using US letter paper (8.5" x 11"), download the "Letter" folder containing the signatures and print them out, double-sided, flip on short side.
 
