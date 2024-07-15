@@ -4,6 +4,8 @@ If you are using US letter (8.5" x 11") paper, download the signature files in t
 
 If you are using A4 paper, download the signature files in the "A4" folder and print out double-sided, flip on short side.
 
+Please note that the letter version has 17 signatures; the A4, only 16.
+
 I have redrafted Sayers' floor plan in Inkscape (files are in source/images) and created both labeled and blank versions of both floors. This is my original work, based on Sayers' public domain original, and I place it into the public domain.
 
 Emendations:
