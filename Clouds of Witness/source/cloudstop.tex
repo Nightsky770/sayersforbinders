@@ -10,7 +10,6 @@ chapterprefix,
 headings=big]{scrbook} % Document font size and paper size
 
 \usepackage{graphicx}
-\usepackage{verse}
 \usepackage{xcolor}
 \usepackage[no-math]{fontspec}
 \usepackage[T1]{fontenc} % International character encodings
@@ -35,6 +34,8 @@ headings=big]{scrbook} % Document font size and paper size
 \usepackage{ebgaramond} 
 \usepackage{epigraph}
 \usepackage{dialogue}
+\usepackage{ellipsis}
+\usepackage{verse}
 
 \MakeAutoQuote{»}{«}
 \catcode`\—=13
@@ -55,7 +56,7 @@ headings=big]{scrbook} % Document font size and paper size
 %\newfontfamily\lettrinefont{Kramer}
 %\renewcommand{\LettrineFontHook}{\fontspec{Kramer}}
 \newfontfamily\mytitlefont{SeasideResortNF.ttf}
-\newfontfamily\myauthorfont{EB Garamond}
+\newfontfamily\myauthorfont{SeasideResortNF.ttf}
 
 \makeatletter
 \@ifclasswith{scrbook}{a5paper}
