@@ -39,7 +39,8 @@ headings=big]{scrbook} % Document font size and paper size
 
 \MakeAutoQuote{»}{«}
 \catcode`\—=13
-\protected\def—{\allowbreak\textemdash\allowbreak}
+%\protected\def—{\allowbreak\textemdash\allowbreak}
+\protected\def—{\textemdash}
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
 \setmainfont{EB Garamond}
@@ -99,7 +100,7 @@ headings=big]{scrbook} % Document font size and paper size
 \makeatother
 
 \BeforeTOCHead[toc]{%
-%  \KOMAoptions{parskip=false}% no parskip in ToC
+  \KOMAoptions{parskip=false}% no parskip in ToC
 %  \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
 \DeclareTOCStyleEntry[beforeskip=0.2cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
 }
@@ -111,22 +112,22 @@ headings=big]{scrbook} % Document font size and paper size
 \defaultfontfeatures{Ligatures=TeX}
 
 \automark{chapter}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \arabic{chapter}:\ #1}{}}
 \lehead{Clouds of Witness}
-\rohead{Chapter \thechapter: \leftmark}
+\rohead{\leftmark}
 \flushbottom
 
 
 
-\hyphenation{}
+\hyphenation{Wim-sey}
 
 
 \begin{document}
 \setlength{\epigraphwidth}{0.8\textwidth}
 \renewcommand{\epigraphflush}{center}
 \renewcommand{\sourceflush}{center}
-\renewcommand*{\chaptermarkformat}{}
-\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
-\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+%\renewcommand*{\chaptermarkformat}{}
+
 
 \frontmatter
 \pagestyle{empty}
@@ -184,11 +185,14 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \textit{The Wallet of Kai-Lung}
 \end{quote}
 \clearpage
+\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
 
 %\KOMAoptions{headings=openleft}
 %\footskip=20pt
 
 \tableofcontents
+\enlargethispage{\baselineskip}
 \clearpage
 
 
@@ -239,21 +243,38 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \include{chapters/18.tex}
 \include{chapters/19.tex}
 
-
+\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
 
 \clearpage
 \KOMAoptions{headings=openleft}
 \chapter*{Colophon}
 \begin{center}
-EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16th century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.\\github.com/georgd/EB-Garamond
+\vfill
+\rule{0.5\textwidth}{.4pt}
 \vfill
 Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
 \vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
 Title is set in »Seaside Resort«, by Nick Curtis, based on a 1933 poster by Italy’s Bertarelli Studios.\\www.nicksfonts.com
 \vfill
-Title page illustration is cropped from »Le Départ au Casino«, a 1923 painting by French artist George Barbier (1882–1932). The original is held by the Rijksmuseum in Amsterdam.
+\rule{0.5\textwidth}{.4pt}
 \vfill
-Typeset in \LaTeX{}.
+Title page illustration is cropped from »Le Départ au Casino«, a 1923 painting by French artist George Barbier (1882\textendash1932). The original is held by the Rijksmuseum in Amsterdam.
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\textit{Clouds of Witness} was Dorothy L. Sayers' (1893\textendash1957) second Lord~Peter Wimsey novel. It was originally published in 1926 by T. Fisher Unwin in London (UK).
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Typeset in \LaTeX{}. Last updated \today.
 \end{center}
 \thispagestyle{empty}
 \end{document}

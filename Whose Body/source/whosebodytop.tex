@@ -39,7 +39,8 @@ headings=big]{scrbook} % Document font size and paper size
 
 \MakeAutoQuote{»}{«}
 \catcode`\—=13
-\protected\def—{\allowbreak\textemdash\allowbreak}
+%\protected\def—{\allowbreak\textemdash\allowbreak}
+\protected\def—{\textemdash}
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}}
 
 \newcount\zzc
@@ -73,7 +74,7 @@ headings=big]{scrbook} % Document font size and paper size
 \addtokomafont{disposition}{\normalfont}
 \setkomafont{part}{\chapterfont\HUGE\bfseries}
 \addtokomafont{partnumber}{\chapterfont\moderatelyhuge}
-\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
+%\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
 \renewcommand*{\chapterformat}{\chaptername~\thechapter}
 
 
@@ -114,9 +115,9 @@ headings=big]{scrbook} % Document font size and paper size
 \setlength{\epigraphwidth}{0.8\textwidth}
 \renewcommand{\epigraphflush}{center}
 \renewcommand{\sourceflush}{center}
-\renewcommand*{\chaptermarkformat}{}
-\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
-\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+%\renewcommand*{\chaptermarkformat}{}
+%\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+%\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
 
 \frontmatter
 \pagestyle{empty}
@@ -129,9 +130,9 @@ headings=big]{scrbook} % Document font size and paper size
 {\setstretch{1.8}\HUGE Whose Body?}\\
 %\vspace{0.5cm}
 %{\HUGE Body?}\\
-\vspace{0.2cm}
+\vfill
 \includegraphics[width=\coverimagesize]{pensiveguy}\\
-\vspace{0.5cm}
+\vfill
 \setstretch{1.5}\mytitlefont
 {\setstretch{1.5}\reasonablyhuge Dorothy L. Sayers}\\
 \end{center}
@@ -163,7 +164,7 @@ headings=big]{scrbook} % Document font size and paper size
 \chapter*{Dedication}
 ~\\
 ~\\
-\begin{center}
+\begin{center}\Large
 To M. J.
 \end{center}
 
@@ -205,15 +206,31 @@ D. L. S.
 \KOMAoptions{headings=openleft}
 \chapter*{Colophon}
 \begin{center}
-EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-16\textsuperscript{th} century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.  \\github.com/georgd/EB-Garamond
+EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century.\\github.com/georgd/EB-Garamond
 \vfill
-Title is set in »Riesling«, by Bright Ideas Foundry.
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Title page is set in »Riesling«, by Bright Ideas Foundry.
+\vfill
+\rule{0.5\textwidth}{.4pt}
 \vfill
 Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
 \vfill
-Title page illustration is a 1922 lithograph by German/British artist Stephan Krotowski (1881-1948) entitled »Frühjahr« (»Spring«). It originally appeared in \textit{STYL: Blätter für Mode und die angenehmen Dinge des Lebens}, a fashion and lifestyle magazine published in Berlin between 1922 and 1924.
+\rule{0.5\textwidth}{.4pt}
 \vfill
-Typeset in \LaTeX{}.
+Title page illustration is a 1922 lithograph by German/British artist Stephan Krotowski (1881\textendash1948) entitled »Frühjahr« (»Spring«). It originally appeared in \textit{STYL: Blätter für Mode und die angenehmen Dinge des Lebens}, a fashion and lifestyle magazine published in Berlin between 1922 and 1924.
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\textit{Whose Body?} was Dorothy L. Sayers' (1893\textendash1957) first Lord Peter Wimsey novel. It was originally published in 1923 by T. Fisher Unwin, in London (UK).
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Typeset in \LaTeX{}. Last updated \today.
 \end{center}
 \thispagestyle{empty}
 \end{document}
