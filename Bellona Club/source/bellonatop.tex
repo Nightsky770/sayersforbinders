@@ -1,56 +1,17 @@
 \documentclass[
 %a5paper,
 paper=5.5in:8.5in,
-BCOR=7mm,
-twoside,
-DIV=calc,
-11pt,
-usegeometry,
-chapterprefix,
-headings=big]{scrbook} % Document font size and paper size
+]{scrbook} % Document font size and paper size
 
-\usepackage{graphicx}
-\usepackage{verse}
-\usepackage{xcolor}
-\usepackage{fontspec}
-\usepackage[T1]{fontenc} % International character encodings
-\usepackage{makeidx}
-\usepackage{lettrine}
-\usepackage{scrlayer-scrpage}
-\usepackage{pifont}
-\usepackage{enumitem}
-\usepackage{caption}
-\usepackage[maxlevel=3]{csquotes}
-\usepackage[export]{adjustbox}
-\usepackage{polyglossia}
-\usepackage{afterpage}
-\usepackage{microtype}
-\usepackage{tocbasic}
-\usepackage[pass]{geometry}
-\usepackage{setspace}
-\usepackage{subfiles}
-\usepackage{rotating}
-\usepackage[all]{nowidow}
-\usepackage{setspaceenhanced}
-\usepackage{ebgaramond} 
+\usepackage{bindery}
+\usepackage{dropcaps}
+\usepackage{illustrations}
 \usepackage{epigraph}
-\usepackage{ellipsis}
+\usepackage{dialogue}
 
-\MakeAutoQuote{»}{«}
-\catcode`\—=13
-%\protected\def—{\allowbreak\textemdash\allowbreak}
-\protected\def—{\textemdash}
-\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
-
-\setmainfont{EB Garamond}[UprightFeatures={CharacterVariant=11}]
-\setdefaultlanguage[variant=uk]{english}
 \setotherlanguage{french}
-\newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
-\newcommand{\moderatelyhuge}{\fontsize{40}{50}\selectfont}
-\newcommand{\reasonablyhuge}{\fontsize{40}{50}\selectfont}
-\newfontfamily\chapterfont{EB Garamond}
-%\newfontfamily\mytitlefont{GramophoneShadedNF.ttf}
-%\newfontfamily\myauthorfont{Gramophone.NF.ttf}
+
+
 \newfontfamily\mytitlefont{Gramophone.NF.ttf}
 \newfontfamily\myauthorfont{Gramophone.NF.ttf}
 
@@ -58,56 +19,34 @@ headings=big]{scrbook} % Document font size and paper size
 \renewcommand{\LettrineFontHook}{\fontspec{Decocaps.ttf}}
 
 \setkomafont{chapter}{\chapterfont\Huge\bfseries}
-\addtokomafont{disposition}{\normalfont}
-%\setkomafont{part}{\chapterfont\HUGE\bfseries}
-%\addtokomafont{partnumber}{\chapterfont\moderatelyhuge}
-%\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
-\renewcommand*{\chapterformat}{\chaptername~\thechapter}
-%\newcommand*\hideentrynumber[1]{}
 
-\makeatletter
-\@ifclasswith{scrbook}{a5paper}
-{%
+\renewcommand*{\chapterformat}{\chaptername~\thechapter}
+
+\renewcommand{\HUGE}{\fontsize{40}{50}\selectfont}
+\newcommand{\moderatelyhuge}{\fontsize{40}{50}\selectfont}
+\newcommand{\reasonablyhuge}{\fontsize{40}{50}\selectfont}
+
+
+\begin{a4}
   \def\coverimagesize{0.7\linewidth}
 %  \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
-}{%
+\end{a4}
+\begin{letter}
     \def\coverimagesize{0.8\linewidth}
 %  \newcommand{\HUGE}{\fontsize{60}{70}\selectfont}
-}
-\makeatother
+\end{letter}
 
-\newcount\zzc
-\makeatletter
-\def\zz{%
-\ifnum\prevgraf<\c@L@lines
-\zzc\z@
-\loop
-\ifnum\zzc<\prevgraf
-\advance\zzc\@ne
-\afterassignment\zzda\count@\L@parshape\relax
-\repeat
-\parshape\L@parshape
-\fi}
-\def\zzda{\afterassignment\zzdb\dimen@}
-\def\zzdb{\afterassignment\zzdef\dimen@}
-\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
-\makeatother
 
 \BeforeTOCHead[toc]{%
   \KOMAoptions{parskip=false}% no parskip in ToC
-  \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
 \DeclareTOCStyleEntry[beforeskip=0.1cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
 }
 
-\headsep=10pt
-\headheight=45pt
-\footskip=30pt
-
-\defaultfontfeatures{Ligatures=TeX}
 
 \automark{chapter}
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \arabic{chapter}:\ #1}{}}
+%\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \arabic{chapter}:\ #1}{}}
 \lehead{The Unpleasantness at the Bellona Club}
+%\rohead{Chapter \thechapter: \leftmark}
 \rohead{\leftmark}
 \flushbottom
 
@@ -118,37 +57,13 @@ headings=big]{scrbook} % Document font size and paper size
 
 
 \begin{document}
-%\setlength{\epigraphwidth}{0.8\textwidth}
-%\renewcommand{\epigraphflush}{center}
-%\renewcommand{\sourceflush}{center}
-%\renewcommand*{\chaptermarkformat}{}
-%\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
-%\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
 
 \frontmatter
 \pagestyle{empty}
 \begin{titlepage}
+\includepdf[width=1.3\textwidth]{titlepage.jpg}
 
-   \recalctypearea
- \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
-
-  \begin{center}\setstretch{1.8}\mytitlefont
-  
-{\setstretch{1.8}\reasonablyhuge The}\\
-\vspace{0.1cm}
-{\setstretch{1.8}\HUGE Unpleasantness}\\
-\vspace{0.3cm}
-{\setstretch{1.8}\reasonablyhuge at the}\\
-\vspace{0.1cm}
-{\HUGE Bellona Club}\\
-\vfill
-\includegraphics[width=\coverimagesize]{clubguys}\\
-\vfill
-\setstretch{1.5}\myauthorfont
-{\setstretch{1.5}\reasonablyhuge Dorothy L. Sayers}\\
-\end{center}
-\recalctypearea
-\restoregeometry
 \end{titlepage}
 
 
@@ -165,7 +80,7 @@ headings=big]{scrbook} % Document font size and paper size
 
 %\vspace*{-2\baselineskip}
 \tableofcontents
-\enlargethispage{1.5\baselineskip}
+%\enlargethispage{1.5\baselineskip}
 \clearpage
 
 
@@ -210,27 +125,29 @@ headings=big]{scrbook} % Document font size and paper size
 \KOMAoptions{headings=openleft}
 \chapter*{Colophon}
 \begin{center}
-EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century.\\github.com/georgd/EB-Garamond
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
-Title is set in »Gramophone«, by Nick Curtis, based on French artist Achille Mauzan’s 1927 poster for Carpano, an Italian vermouth.\\www.nicksfonts.com
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
-Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
-Title page decoration is cropped from an illustration by German artist Ernst Kreuscher entitled »Im Club« (»In the Club«). It was published in a 1922 issue of \textit{STYL: Blätter für Mode und die angenehmen Dinge des Lebens}, a fashion and lifestyle magazine published in Berlin from 1922\textendash1924.
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
+\begin{minipage}{\textwidth}
 \textit{The Unpleasantness at the Bellona Club} was Dorothy L. Sayers' (1893\textendash1957) fourth Lord Peter Wimsey novel. It was originally published in 1928 by Ernest Benn, in London (UK).
+\end{minipage}
 \vfill
 \rule{0.5\textwidth}{.4pt}
 \vfill
+\begin{minipage}{\textwidth}
+Text is set in »EB Garamond«, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title is set in »Gramophone«, by Nick Curtis, based on French artist Achille Mauzan’s 1927 poster for Carpano, an Italian vermouth. Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.
+\end{minipage}
+\vfill
+github.com/georgd/EB-Garamond\\www.nicksfonts.com\\fontspace.com/cybapee-creations
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+Title page decoration is cropped from an illustration by German artist Ernst Kreuscher entitled »Im Club« (»In the Club«). It was published in a 1922 issue of \textit{STYL: Blätter für Mode und die angenehmen Dinge des Lebens}, a fashion and lifestyle magazine published in Berlin from 1922\textendash1924.
+\end{minipage}
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
 This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\end{minipage}
 \vfill
 \rule{0.5\textwidth}{.4pt}
 \vfill
