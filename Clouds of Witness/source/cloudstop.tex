@@ -1,103 +1,21 @@
+\PassOptionsToPackage{figuresright}{rotating}
 \documentclass[
 paper=5.5in:8.5in,
 %a5paper,
-BCOR=7mm,
-twoside,
-DIV=calc,
-11pt,
-usegeometry,
-chapterprefix,
-headings=big]{scrbook} % Document font size and paper size
+]{scrbook} % Document font size and paper size
 
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage[no-math]{fontspec}
-\usepackage[T1]{fontenc} % International character encodings
-\usepackage{makeidx}
-\usepackage{lettrine}
-\usepackage{scrlayer-scrpage}
-\usepackage{pifont}
-\usepackage{enumitem}
-\usepackage{caption}
-\usepackage[maxlevel=3]{csquotes}
-\usepackage[export]{adjustbox}
-\usepackage{polyglossia}
-\usepackage{afterpage}
-\usepackage{microtype}
-\usepackage{tocbasic}
-\usepackage[pass]{geometry}
-\usepackage{setspace}
-\usepackage{subfiles}
-\usepackage[figuresright]{rotating}
-\usepackage[all]{nowidow}
-\usepackage{setspaceenhanced}
-\usepackage{ebgaramond} 
-\usepackage{epigraph}
+\usepackage{bindery}
+\usepackage{dropcaps}
+\usepackage{illustrations}
 \usepackage{dialogue}
-\usepackage{ellipsis}
-\usepackage{verse}
 
-\MakeAutoQuote{»}{«}
-\catcode`\—=13
-%\protected\def—{\allowbreak\textemdash\allowbreak}
-\protected\def—{\textemdash}
-\newcommand\longdash{\mbox{---\,}\ignorespaces{}}
-
-\setmainfont{EB Garamond}
-\setdefaultlanguage[variant=uk]{english}
 \setotherlanguage{french}
 
-\newcommand{\moderatelyhuge}{\fontsize{40}{50}\selectfont}
-\newcommand{\reasonablyhuge}{\fontsize{30}{40}\selectfont}
-\newfontfamily\chapterfont{EB Garamond}
-\newfontfamily\lettrinefont{Decocaps.ttf}
-\renewcommand{\LettrineFontHook}{\fontspec{Decocaps.ttf}}
-%\input Kramer.fd
-%\newcommand*\initfamily{\usefont{U}{Kramer}{xl}{n}}
-%\newfontfamily\lettrinefont{Kramer}
-%\renewcommand{\LettrineFontHook}{\fontspec{Kramer}}
+\setdropcaps{Decocaps.ttf}
+
 \newfontfamily\mytitlefont{SeasideResortNF.ttf}
 \newfontfamily\myauthorfont{SeasideResortNF.ttf}
 
-\makeatletter
-\@ifclasswith{scrbook}{a5paper}
-{%
-  \def\coverimagesize{0.7\linewidth}
-  \newcommand{\HUGE}{\fontsize{50}{60}\selectfont}
-}{%
-    \def\coverimagesize{0.8\linewidth}
-  \newcommand{\HUGE}{\fontsize{60}{70}\selectfont}
-}
-\makeatother
-
-\setkomafont{chapter}{\chapterfont\Huge\bfseries}
-\addtokomafont{disposition}{\normalfont}
-\setkomafont{part}{\chapterfont\HUGE\bfseries}
-\addtokomafont{partnumber}{\chapterfont\moderatelyhuge}
-\renewcommand*{\partformat}{\partname~\thepart} %renew so it doesn't have the trailing period
-\renewcommand*{\chapterformat}{\chaptername~\thechapter}
-\newcommand*\hideentrynumber[1]{}
-
-\graphicspath{ {./images/} }
-\captionsetup[figure]{font=sc,labelformat=empty}
-
-
-\newcount\zzc
-\makeatletter
-\def\zz{%
-\ifnum\prevgraf<\c@L@lines
-\zzc\z@
-\loop
-\ifnum\zzc<\prevgraf
-\advance\zzc\@ne
-\afterassignment\zzda\count@\L@parshape\relax
-\repeat
-\parshape\L@parshape
-\fi}
-\def\zzda{\afterassignment\zzdb\dimen@}
-\def\zzdb{\afterassignment\zzdef\dimen@}
-\def\zzdef#1\relax{\edef\L@parshape{\the\numexpr\count@-1\relax\space #1}}
-\makeatother
 
 \BeforeTOCHead[toc]{%
   \KOMAoptions{parskip=false}% no parskip in ToC
@@ -105,11 +23,6 @@ headings=big]{scrbook} % Document font size and paper size
 \DeclareTOCStyleEntry[beforeskip=0.2cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
 }
 
-\headsep=10pt
-\headheight=45pt
-\footskip=30pt
-
-\defaultfontfeatures{Ligatures=TeX}
 
 \automark{chapter}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \arabic{chapter}:\ #1}{}}
@@ -126,38 +39,39 @@ headings=big]{scrbook} % Document font size and paper size
 \setlength{\epigraphwidth}{0.8\textwidth}
 \renewcommand{\epigraphflush}{center}
 \renewcommand{\sourceflush}{center}
-%\renewcommand*{\chaptermarkformat}{}
 
 
 \frontmatter
 \pagestyle{empty}
 \begin{titlepage}
-   \recalctypearea
- \newgeometry{left=10mm,right=10mm,top=7mm, bottom=7mm}
 
-  \begin{center}\setstretch{1.8}\mytitlefont
-{\setstretch{1.8}\HUGE Clouds}\\
-\vspace{0.5cm}
-{\setstretch{1.8}\moderatelyhuge of}\\
-\vspace{0.2cm}
-{\HUGE Witness}\\
-\vspace*{.5cm}
-\includegraphics[width=\coverimagesize]{casino}\\
- \end{center}
- \vspace*{.1cm}
- \begin{center}\setstretch{1.5}\myauthorfont
-{\setstretch{1.5}\reasonablyhuge Dorothy L. Sayers}\\
-\end{center}
-  \end{titlepage}
+\begin{letter}
+	\renewcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+	\newcommand{\lesshuge}{\fontsize{40}{50}\selectfont}
+	\begin{tikzpicture}[remember picture, overlay]  
+		\node (pic) at ($(current page.south)+(0cm,9cm)$) {\includegraphics[width=.9\linewidth]{casino}};
+		\node[anchor=center,align=center,text width=\textwidth] (clouds) at ($(current page.north)+(0cm,-1.7cm)$) {\HUGE\mytitlefont Clouds};
+		\node[anchor=center,align=center,text width=\textwidth] (of) at ($(current page.north)+(0cm,-3.5cm)$) {\lesshuge\mytitlefont of};
+		\node[anchor=center,align=center,text width=\textwidth] (witness) at ($(current page.north)+(0cm,-5.3cm)$) {\HUGE\mytitlefont Witness};
+		\node[anchor=center,align=center,text width=\textwidth] (author) at ($(current page.south)+(0cm,1.5cm)$) {\Huge\myauthorfont Dorothy L. Sayers};
+	\end{tikzpicture}
+\end{letter}
+
+\begin{a4}
+	\renewcommand{\HUGE}{\fontsize{50}{60}\selectfont}
+	\newcommand{\lesshuge}{\fontsize{40}{50}\selectfont}
+	\begin{tikzpicture}[remember picture, overlay]  
+		\node (pic) at ($(current page.south)+(0cm,8.5cm)$) {\includegraphics[width=.9\linewidth]{casino}};
+		\node[anchor=center,align=center,text width=\textwidth] (clouds) at ($(current page.north)+(0cm,-1.2cm)$) {\HUGE\mytitlefont Clouds};
+		\node[anchor=center,align=center,text width=\textwidth] (of) at ($(current page.north)+(0cm,-3cm)$) {\lesshuge\mytitlefont of};
+		\node[anchor=center,align=center,text width=\textwidth] (witness) at ($(current page.north)+(0cm,-4.8cm)$) {\HUGE\mytitlefont Witness};
+		\node[anchor=center,align=center,text width=\textwidth] (author) at ($(current page.south)+(0cm,1cm)$) {\Huge\myauthorfont Dorothy L. Sayers};
+	\end{tikzpicture}
+\end{a4}
+
+\end{titlepage}
 
 
-\pagestyle{plain}
-
-\renewcommand*\raggedchapter{\centering}
-
-
-  \recalctypearea
-\restoregeometry
 \KOMAoptions{headings=openany}
 \begin{center}\setstretch{1.8}\scshape\bfseries
 {\Large The Solution of}\\
@@ -188,15 +102,13 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
 \renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
 
-%\KOMAoptions{headings=openleft}
-%\footskip=20pt
-
 \tableofcontents
-\enlargethispage{\baselineskip}
+
 \clearpage
 
 
 \begin{sidewaysfigure}
+\centering
 \includegraphics[width=0.9\columnwidth]{groundfloorlabeled}%
 \caption{Riddlesdale Lodge: Ground Floor}
 \addcontentsline{toc}{chapter}{Riddlesdale Lodge: Plan of ground floor}
@@ -205,17 +117,11 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \clearpage
 
 \begin{sidewaysfigure}
+\centering
 \includegraphics[width=\columnwidth]{secondfloorlabeled}%
 \caption{Riddlesdale Lodge: Second Floor}
 \addcontentsline{toc}{chapter}{Riddlesdale Lodge: Plan of second floor}
 \end{sidewaysfigure}
-
-%\clearpage
-
-
-
-\footskip=30pt
-
 
 
 \mainmatter
@@ -249,32 +155,36 @@ The inimitable stories of Tong-king never have any real ending, and this one, be
 \clearpage
 \KOMAoptions{headings=openleft}
 \chapter*{Colophon}
-\begin{center}
-EB Garamond is Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. This digital version reproduces the original design by Claude Garamont closely: the source for the letterforms is a scan of a specimen known as the \enquote{Berner specimen,} which was composed in 1592 by Conrad Berner, the son-in-law of Christian Egenolff and his successor at the Egenolff print office.\\github.com/georgd/EB-Garamond
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
-Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.\\fontspace.com/cybapee-creations
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
-Title is set in »Seaside Resort«, by Nick Curtis, based on a 1933 poster by Italy’s Bertarelli Studios.\\www.nicksfonts.com
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
-Title page illustration is cropped from »Le Départ au Casino«, a 1923 painting by French artist George Barbier (1882\textendash1932). The original is held by the Rijksmuseum in Amsterdam.
-\vfill
-\rule{0.5\textwidth}{.4pt}
-\vfill
+\centering
+\begin{minipage}{\textwidth}
 \textit{Clouds of Witness} was Dorothy L. Sayers' (1893\textendash1957) second Lord~Peter Wimsey novel. It was originally published in 1926 by T. Fisher Unwin in London (UK).
+\end{minipage}
 \vfill
 \rule{0.5\textwidth}{.4pt}
 \vfill
+\begin{minipage}{\textwidth}
+Text is set in »EB Garamond«, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title page is set in »Seaside Resort«, by Nick Curtis, based on a 1933 poster by Italy’s Bertarelli Studios. Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.
+\end{minipage}
+\vfill
+github.com/georgd/EB-Garamond\\
+nicksfonts.com\\
+fontspace.com/cybapee-creations
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+Title page illustration is cropped from »Le Départ au Casino«, a 1923 painting by French artist George Barbier (1882\textendash1932). The original is held by the Rijksmuseum in Amsterdam.
+\end{minipage}
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
 This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\end{minipage}
 \vfill
 \rule{0.5\textwidth}{.4pt}
 \vfill
 Typeset in \LaTeX{}. Last updated \today.
-\end{center}
+
 \thispagestyle{empty}
 \end{document}
