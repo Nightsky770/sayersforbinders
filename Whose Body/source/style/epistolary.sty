@@ -46,7 +46,8 @@
   \ifx\\#1\\%
     % If the optional argument is empty, don't add anything
   \else
-    #1\par\medskip
+%    #1\par\medskip
+	\parbox{0.7\textwidth}{#1}\par\bigskip
   \fi
   \textsc{#2}
   \end{flushright}
