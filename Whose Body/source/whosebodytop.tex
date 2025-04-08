@@ -1,31 +1,28 @@
 \documentclass[
-paper=5.5in:8.5in
-%a5paper
+%paper=5.5in:8.5in
+a5paper
 ]{scrbook} 
 
-\usepackage{bindery}
+\title{Whose Body?}
+
+\usepackage[
+tocspacing=spacious,
+totalchapters=13]{bindery}
 \usepackage{dropcaps}
-\usepackage{illustrations}
+\usepackage{epistolary}
 \usepackage{dialogue}
 
 \setotherlanguage{french}
 
-\renewcommand{\HUGE}{\fontsize{50}{50}\selectfont}
 
-\newfontfamily\mytitlefont{riesling.ttf}
+
+\newfontfamily\decofont{riesling.ttf}
 \setdropcaps{Decocaps.ttf}
 
-
-\KOMAoption{toc}{flat}
-\DeclareTOCStyleEntry[numwidth=0pt,entrynumberformat=\hideentrynumber,linefill=\TOCLineLeaderFill]{chapter}{chapter}
 
 
 
 \hyphenation{}
-
-\automark{chapter}
-\lehead{Whose Body?}
-\rohead{Chapter \thechapter}
 
 
 
@@ -33,7 +30,7 @@ paper=5.5in:8.5in
 
 
 \frontmatter
- \includepdf[width=1.3\textwidth]{titlepage.jpg}
+ \includepdf[width=\coverwidth]{titlepage.jpg}
 
 
 
@@ -47,7 +44,7 @@ paper=5.5in:8.5in
 ~\\
 ~\\
 \begin{center}\Large
-To M.~J.
+To M\@.~J\@.
 \end{center}
 
 \noindent Dear Jim:
@@ -57,7 +54,7 @@ This book is your fault. If it had not been for your brutal insistence, Lord Pet
 
 \begin{flushright}
 Yours ever,\\
-D.~L.~S.
+D\@.~L\@.~S\@.
 \end{flushright}
 
 
@@ -87,7 +84,7 @@ D.~L.~S.
 \chapter*{Colophon}
 \begin{center}
 \begin{minipage}{\textwidth}
-\textit{Whose Body?} was Dorothy L. Sayers' (1893\textendash1957) first Lord Peter Wimsey novel. It was originally published in 1923 by T. Fisher Unwin, in London (UK).
+\textit{Whose Body?} was Dorothy L. Sayers' (1893--1957) first Lord Peter Wimsey novel. It was originally published in 1923 by T.~Fisher Unwin, in London (UK).
 \end{minipage}
 \vfill
 gutenberg.org/ebooks/58820
@@ -95,7 +92,7 @@ gutenberg.org/ebooks/58820
 \rule{0.5\textwidth}{.4pt}
 \vfill
 \begin{minipage}{\textwidth}
-Text is set in »EB Garamond«, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title page is set in »Riesling«, by Bright Ideas Foundry. Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.
+Text is set in <EB Garamond>, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title page is set in <Riesling>, by Bright Ideas Foundry. Chapter dropcaps are set in <Deco Caps>, by Petra Heidorn.
 \end{minipage}
 \vfill
 github.com/georgd/EB-Garamond\\fontspace.com/cybapee-creations
