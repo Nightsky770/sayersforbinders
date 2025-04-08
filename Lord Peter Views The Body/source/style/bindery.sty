@@ -1,10 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bindery}[2025/04/07 Bindery package with proper TOC spacing options]
+
 \RequirePackage{xcolor}
 \RequirePackage{fontspec}
 \RequirePackage[T1]{fontenc} % International character encodings
 \RequirePackage{makeidx}
 \RequirePackage{scrlayer-scrpage}
 \RequirePackage{pifont}
-\RequirePackage[maxlevel=3,autostyle]{csquotes}
+\RequirePackage[maxlevel=3,autostyle]{csquotes} %maxlevel controls the level of quote nesting. "I talked to Alice, who said 'Bob told me "hi."'" = 3 levels of nesting
 \RequirePackage[export]{adjustbox}
 \RequirePackage{polyglossia}
 \RequirePackage{afterpage}
@@ -17,15 +20,31 @@
 \RequirePackage{ebgaramond} 
 \RequirePackage{ellipsis}
 \RequirePackage{pdfpages}
-\RequirePackage{verse}
-\RequirePackage{epigraph}
 \RequirePackage{comment}
-\RequirePackage{etoolbox}
+\RequirePackage{etoolbox} %for advanced package magic
 \RequirePackage{soul}
 \RequirePackage{enumitem}
 \RequirePackage{needspace}
+\RequirePackage[shortcuts]{extdash} %Allows for auto-breaks at hyphens: Lud\-/in\-/the\-/Mist
+\RequirePackage{kvoptions} %for advanced package magic
+\RequirePackage{calc}    % For calculations performed within the package
 
-\setlist[description]{font=\normalfont\bfseries}
+%some commonly-called packages. Load em just in case.
+\RequirePackage{verse}
+\RequirePackage{epigraph}
+
+\makeatletter
+\DeclareBoolOption{namedChapters}
+\DeclareBoolOption{romanChapters}
+\DeclareBoolOption{shortStories}
+\DeclareStringOption[\normalfont]{chapterfont}
+\DeclareStringOption[]{worktitle}
+% TOC spacing options
+\DeclareStringOption[normal]{tocspacing}      % Can be 'compact', 'normal', 'spacious', or 'page-limited'
+\DeclareStringOption[10]{totalchapters}       % Total number of chapters for TOC spacing
+\DeclareStringOption[1]{maxpages}             % Max pages for TOC in page-limited mode
+\ProcessKeyvalOptions*
+
 
 \KOMAoption{BCOR}{7mm}
 \KOMAoption{twoside}{true}
@@ -37,18 +56,49 @@
 \KOMAoption{listof}{flat,nochaptergap}
 \KOMAoption{toc}{listof}
 
+%%%%%%%%% First let us choose our paper size %%%%%%%%%
+\@ifclasswith{scrbook}{a5paper}
+{%
+  \includecomment{a4}
+  \excludecomment{letter}
+  \newcommand{\coverwidth}{1.1\textwidth}
+}{%
+  \excludecomment{a4}
+  \includecomment{letter}
+  \newcommand{\coverwidth}{1.2\textwidth}
+}
+%%%% end of paper size
+
+%Misc setup
+\setlist[description]{font=\normalfont\bfseries}
+
 \renewcommand\raggedsection{\centering} %always center chapter heads
 
-\graphicspath{ {./images/} }
-
-\newcommand*\hideentrynumber[1]{}
+\graphicspath{ {./images/} } %default location for pictures
 
 
-\MakeAutoQuote{»}{«}
+\MakeAutoQuote{<}{>}
 \catcode`\—=13
-\protected\def—{\textemdash\allowbreak}
+\protected\def—{\textemdash\allowbreak} %allow breaks after an emdash (but not before, because that would be silly)
 \newcommand\longdash{\mbox{---\,}\ignorespaces{}} %corrects issue with lines breaking between dash and end quote
+\newcommand\doubleemdash{⸺} %because two emdashes run together can theoretically break across lines, which is bad
 
+%in case we need a sans font; Gillius is nice
+\setsansfont[
+Scale=MatchUppercase,
+UprightFont = *-Regular.otf,
+ItalicFont = *-Italic.otf
+]{GilliusADF}
+
+
+% Balanced chapter heading position
+\RedeclareSectionCommand[
+  beforeskip=2.0\baselineskip,
+  afterskip=1.5\baselineskip
+]{chapter}
+
+
+% Nice portable scene divider, auto-centered and with a bit of vertical space
 \newcommand{\divider}{%
   \par\vspace{0.5em}%
   \noindent\hfil\rule{0.5\textwidth}{.4pt}\hfil%
@@ -56,12 +106,12 @@
 }
 
 \newcommand{\HUGE}{\fontsize{30}{30}\selectfont}
-\newcommand{\resetchapskip}{\renewcommand*{\chapterheadstartvskip}{\vspace{\@tempskipa}}}
+\newcommand{\resetchapskip}{\renewcommand*{\chapterheadstartvskip}{\vspace{\@tempskipa}}} %should we wish to restore the chapter head settings
 
-\setmainfont{EB Garamond}[UprightFeatures={CharacterVariant=11}]
-\setdefaultlanguage[variant=uk]{english}
+\setmainfont{EB Garamond}[UprightFeatures={CharacterVariant=11}] %for some reason, EB Garamond uses a weird "I" glyph for "1". Use variant form for normal looking "1". 
+\setdefaultlanguage[variant=uk]{english} %most of the texts I do are British, so it makes sense to have this as a default
 \addtokomafont{disposition}{\normalfont}
-\newfontfamily\chapterfont{EB Garamond} %might override this later
+\newfontfamily\chapterfont{EB Garamond} %might override this later, but makes a good default
 \setkomafont{chapter}{\chapterfont\Huge}
 
 \headsep=10pt
@@ -72,9 +122,284 @@
 
 \flushbottom
 
+
+% Why are epigraph's defaults so hideous?
 \setlength{\epigraphwidth}{0.8\textwidth}
 \renewcommand{\epigraphflush}{center}
 \renewcommand{\sourceflush}{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%% Chapter marking setup %%%%%%%%%%%%%%%%%%%%%
+
+\automark{chapter}
+
+\def\bindery@title{}
+
+\newcommand{\setworktitle}[1]{%
+  \def\bindery@title{#1}%
+}
+
+% Command to setup all the headers
+\newcommand{\setupheaders}{%
+  % Check if a title is manually set via \setworktitle
+  \ifx\bindery@title\@empty
+    % If not, check if we have a document title
+    \@ifundefined{@title}{%
+      \lehead{}% Fallback if no title is defined
+    }{%
+      \lehead{\@title}% Use document title from \title command
+    }%
+  \else
+    \lehead{\bindery@title}% Use manually set title
+  \fi
+  
+  % Handle chapter marks based on options
+  	\ifbindery@shortStories
+		% Short stories have titles only, and no chapter numbers.
+		\renewcommand{\chaptermark}[1]{%
+			\markboth{##1}{}%
+		}
+	\else
+	  \ifbindery@namedChapters
+		\ifbindery@romanChapters
+			% Roman numerals for chapters: TRUE; chapters have titles: TRUE
+			% "Chapter V: My Adventure Continues"
+			\renewcommand{\chaptermark}[1]{%
+			\markboth{\chaptername\ \arabic{chapter}:\ ##1}{}%
+		  }
+		\else
+		   % Roman numerals for chapters: FALSE; chapters have titles: TRUE
+			% "Chapter 2: Stuff Happens"
+		  \renewcommand{\chaptermark}[1]{%
+			\markboth{\chaptername\ \thechapter:\ ##1}{}%
+		  }
+		\fi
+	  \else
+		\ifbindery@romanChapters
+			% Roman numerals for chapters: TRUE; chapters have titles: FALSE
+			% "Chapter XLIX" (will appear in header as "Chapter 49", because it's a pain to constantly have to stop and translate Roman numerals when reading)
+			\renewcommand{\chaptermark}[1]{%
+			\markboth{\chaptername\ \arabic{chapter}}{}%
+		  }
+		\else
+		  % Roman numerals for chapters: FALSE; chapters have titles: FALSE
+		  % "Chapter 3"
+		  \renewcommand{\chaptermark}[1]{%
+			\markboth{\chaptername\ \thechapter}{}%
+		  }
+		\fi
+	  \fi
+	\fi
+  % Set right header on odd pages to chapter info
+  \rohead{\leftmark}
+}
+
+%%%%%%%%%%%%%%%%%%%%% Table of Contents setup %%%%%%%%%%%%%%%%%%%%
+
+% Store value to use for chapter spacing in TOC
+\newlength{\bindery@tocchapterskip}
+\newlength{\bindery@tocsectionskip}
+\newcommand*\hideentrynumber[1]{}
+
+% Define string comparisons for tocspacing
+\def\@compact{compact}
+\def\@normal{normal}
+\def\@spacious{spacious}
+\def\@pagelimited{page-limited}
+
+% Calculate spacing based on chapters and available space
+\newcommand{\calculateTOCspacing}{%
+  % Get number of chapters
+  \newcount\bindery@numchaps
+  \bindery@numchaps=\bindery@totalchapters@\relax
+  
+  % Calculate space per chapter based on available height
+  \newlength{\bindery@availablespace}
+  \setlength{\bindery@availablespace}{0.8\textheight * \bindery@maxpages@}
+  
+  % Basic calculation (subtract top and bottom space)
+  \setlength{\bindery@availablespace}{\bindery@availablespace - 5\baselineskip}
+  
+  % Per chapter spacing
+  \newlength{\bindery@perchapspace}
+  \ifnum\bindery@numchaps>0
+    \setlength{\bindery@perchapspace}{\bindery@availablespace / \bindery@numchaps}
+    
+    % For very many chapters on one page
+    \ifnum\bindery@numchaps>20
+      \setlength{\bindery@tocchapterskip}{0.2em}
+      \setlength{\bindery@tocsectionskip}{0.4em}
+    \else
+      % For fewer chapters, use more spacing
+      \setlength{\bindery@tocchapterskip}{0.8em}
+      \setlength{\bindery@tocsectionskip}{1.5em}
+    \fi
+  \else
+    % Fallback
+    \setlength{\bindery@tocchapterskip}{0.8em}
+    \setlength{\bindery@tocsectionskip}{1.5em}
+  \fi
+}
+
+% Set TOC spacing based on the options
+\newcommand{\setTOCSpacing}{%
+  % Default to normal mode if empty
+  \ifx\bindery@tocspacing@\@empty
+    \def\bindery@tocspacing@{normal}
+  \fi
+  
+  % Check if tocspacing is one of our predefined modes
+  \ifx\bindery@tocspacing@\@compact
+    % Compact mode - useful for many chapters
+    \setlength{\bindery@tocchapterskip}{0.2em}
+    \setlength{\bindery@tocsectionskip}{0.4em}
+  \else\ifx\bindery@tocspacing@\@normal
+    % Normal mode - balanced
+    \setlength{\bindery@tocchapterskip}{0.8em}
+    \setlength{\bindery@tocsectionskip}{1.2em}
+  \else\ifx\bindery@tocspacing@\@spacious
+    % Spacious mode - for shorter TOCs
+    \setlength{\bindery@tocchapterskip}{1.5em}
+    \setlength{\bindery@tocsectionskip}{2.0em}
+  \else\ifx\bindery@tocspacing@\@pagelimited
+    % Page-limited mode - calculate based on chapter count
+    \calculateTOCspacing
+  \else
+    % Not a recognized mode, default to normal
+    \setlength{\bindery@tocchapterskip}{0.8em}
+    \setlength{\bindery@tocsectionskip}{1.2em}
+  \fi\fi\fi\fi
+  
+  % Special case for short stories books - always use more spacious layout
+  \ifbindery@shortStories
+    \ifx\bindery@tocspacing@\@compact
+      % Even in compact mode, provide some extra space
+      \setlength{\bindery@tocchapterskip}{0.5em}
+      \setlength{\bindery@tocsectionskip}{0.7em}
+    \else\ifx\bindery@tocspacing@\@spacious
+      % Extra spacious for short stories
+      \setlength{\bindery@tocchapterskip}{2.0em}
+      \setlength{\bindery@tocsectionskip}{2.5em}
+    \fi\fi
+  \fi
+}
+
+\newcommand{\setuptocentries}{%
+  \ifbindery@namedChapters
+    \ifbindery@romanChapters
+    % Roman numerals for chapters: TRUE; chapters have titles: TRUE
+    % "Chapter V: My Adventure Continues"
+      \renewcommand{\thechapter}{\Roman{chapter}}
+      \DeclareTOCStyleEntry[
+        dynnumwidth=true,
+        linefill=\TOCLineLeaderFill,
+        indent=0pt,
+        beforeskip=\bindery@tocchapterskip,
+        entryformat=\bindery@chapterfont,
+        pagenumberformat=\bindery@chapterfont
+      ]{tocline}{chapter}
+    \else
+    % Roman numerals for chapters: FALSE; chapters have titles: TRUE
+    % "Chapter 2: Stuff Happens"
+      \DeclareTOCStyleEntry[
+        numwidth=2.3em,
+        linefill=\TOCLineLeaderFill,
+        indent=0pt,
+        beforeskip=\bindery@tocchapterskip,
+        entryformat=\bindery@chapterfont,
+        pagenumberformat=\bindery@chapterfont
+      ]{tocline}{chapter}
+    \fi
+  \else
+    % Roman numerals for chapters: TRUE; chapters have titles: FALSE
+    % "Chapter XLIX"
+    \ifbindery@romanChapters
+      \renewcommand{\thechapter}{\Roman{chapter}}
+      \DeclareTOCStyleEntry[
+        dynnumwidth=true,
+        linefill=\TOCLineLeaderFill,
+        indent=0pt,
+        beforeskip=\bindery@tocchapterskip,
+        entryformat=\bindery@chapterfont,
+        pagenumberformat=\bindery@chapterfont,
+        entrynumberformat=\hideentrynumber
+      ]{tocline}{chapter}
+    \else
+      % Roman numerals for chapters: FALSE; chapters have titles: FALSE
+      % "Chapter 3"
+      \DeclareTOCStyleEntry[
+        numwidth=2.3em,
+        linefill=\TOCLineLeaderFill,
+        indent=0pt,
+        beforeskip=\bindery@tocchapterskip,
+        entryformat=\bindery@chapterfont,
+        pagenumberformat=\bindery@chapterfont,
+        entrynumberformat=\hideentrynumber
+      ]{tocline}{chapter}
+    \fi
+  \fi
+  
+  \DeclareTOCStyleEntry[
+    numwidth=2.3em,
+    linefill=\TOCLineLeaderFill,
+    indent=0pt,
+    beforeskip=\bindery@tocsectionskip,
+    entryformat=\bindery@chapterfont,
+    pagenumberformat=\bindery@chapterfont
+  ]{tocline}{section}
+}
+
+% Apply the setup at \begin{document}
+\AtBeginDocument{%
+  % First check if the worktitle option was set and apply it
+  \@ifundefined{bindery@worktitle@}{}{%
+    \setworktitle{\bindery@worktitle@}%
+  }
+
+  % Set up the headers
+  \setupheaders
+  
+  % Set TOC spacing based on options
+  \setTOCSpacing
+  
+  % Setup TOC entries with the determined spacing
+  \setuptocentries
+}
+
+% Configure initial TOC appearance 
+\DeclareTOCStyleEntry[
+  numwidth=2.3em,
+  linefill=\TOCLineLeaderFill,
+  indent=0pt,
+  beforeskip=0.8em % Default to normal spacing
+]{tocline}{chapter}
+
+% Customize TOC to be properly positioned
+\renewcommand{\tableofcontents}{%
+  \cleardoublepage
+  \chapter*{\contentsname}
+  \vspace{1em}% Add space after the title
+  \@starttoc{toc}%
+}
+
+% Consistent TOC for front matter
+\renewcommand{\listoffigures}{%
+  \cleardoublepage
+  \chapter*{\listfigurename}
+  \addcontentsline{toc}{chapter}{\listfigurename}
+  \@starttoc{lof}
+}
+
+%%%%%%%%%%%%%%%%%%%%% End of ToC setup %%%%%%%%%%%%%%
+
+
+%%%% Other stuffs %%%%%%%%%%%
+
+% Supports output in pounds-shillings-pence for use in historical British works. Usage: 
+% \oldmoney{1}{7}{9} -> £1 7s. 9d.
+% You can leave any of the three arguments blank. The command will assume the blank value is zero and silently suppress it:
+% \oldmoney{60}{}{1} -> £60 1d.
+% \oldmoney{}{3}{1} -> 3s. 1d. 
 
 \newcommand{\oldmoney}[3]{%
   \ifnum#1>0
@@ -95,15 +420,6 @@
   \fi
 }
 
-\makeatletter
-\@ifclasswith{scrbook}{a5paper}
-{%
-	\includecomment{a4}
-	\excludecomment{letter}
-}{%
-	\excludecomment{a4}
-	\includecomment{letter}
-}
 
 \newcommand{\headlesschapter}[1]{%just in case we need to suppress the chapter head
   \begingroup
@@ -111,5 +427,17 @@
   \chapter{#1}
   \endgroup
 }
+%Ugly kludge to get "Part N" in great big type on its own page
+\patchcmd\@part
+  {\thepart\hspace{1em}}
+  {\HUGE\bfseries{\partname}\ \thepart\hspace{1em}}
+  {}{}
 
-  \makeatother
+% Add a command for manual TOC adjustment
+\newcommand{\settocspacing}[2]{%
+  \setlength{\bindery@tocchapterskip}{#1}%
+  \setlength{\bindery@tocsectionskip}{#2}%
+  \setuptocentries
+}
+
+\makeatother

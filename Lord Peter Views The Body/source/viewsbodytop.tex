@@ -3,7 +3,12 @@ a5paper,
 %paper=5.5in:8.5in,
 ]{scrbook} % Document font size and paper size
 
-\usepackage{bindery}
+\title{Lord Peter Views The Body}
+
+\usepackage[
+shortStories,
+tocspacing=spacious,
+totalchapters=13]{bindery}
 \usepackage{dropcaps}
 \usepackage{illustrations}
 \usepackage{epistolary}
@@ -16,25 +21,12 @@ a5paper,
 
 \setdropcaps{Decocaps.ttf}
 
-
-\BeforeTOCHead[toc]{%
-  \KOMAoptions{parskip=false}% no parskip in ToC
-%  \RedeclareSectionCommand[afterskip=1sp minus 1sp]{chapter}% no skip after ToC title
-\DeclareTOCStyleEntry[beforeskip=0.5cm,entryformat=\chapterfont,linefill=\TOCLineLeaderFill]{chapter}{chapter}
-}
-
-\automark{chapter}
-\lehead{Lord Peter Views The Body}
-\rohead{\leftmark}
-\flushbottom
-
 \hyphenation{}
-
 
 \begin{document}
 \frontmatter
 \begin{titlepage}
- \includepdf[width=1.3\textwidth]{titlepage.jpg}
+ \includepdf[width=\coverwidth]{titlepage.jpg}
 \end{titlepage}
 
 \KOMAoptions{headings=openright}
@@ -72,14 +64,14 @@ a5paper,
 \chapter*{Colophon}
 \begin{center}
 \begin{minipage}{\textwidth}
-\textit{Lord Peter Views The Body} was Dorothy L. Sayers' (1893\textendash1957) first collection of Lord Peter Wimsey short stories. It was originally published in 1928 by Victor Gollancz Limited in London (UK).
+\textit{Lord Peter Views The Body} was Dorothy L. Sayers' (1893--1957) first collection of Lord Peter Wimsey short stories. It was originally published in 1928 by Victor Gollancz Limited in London (UK).
 \end{minipage}
 \vfill
 \rule{0.5\textwidth}{.4pt}
 \vfill
 
 \begin{minipage}{\textwidth}
-Text is set in »EB Garamond«, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title page is set in »Riesling«, by Bright Ideas Foundry. Chapter dropcaps are set in »Deco Caps«, by Petra Heidorn.
+Text is set in <EB Garamond>, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title page is set in <Riesling>, by Bright Ideas Foundry. Chapter dropcaps are set in <Deco Caps>, by Petra Heidorn.
 \end{minipage}
 \vfill
 github.com/georgd/EB-Garamond\\fontspace.com/cybapee-creations
