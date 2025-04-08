@@ -12,6 +12,9 @@ I have redrafted the crossword puzzle (and its solution) from "The Fascinating P
 
 CW: Misogyny; antisemetic stereotypes; use of ethnic slurs "gypsy" and "dago" (uncensored); domestic violence; maritial infidelity; blackmail; murder (a couple of which are especially gruesome).
 
+Emendations:
+* in "The Unsolved Puzzle of the Man With No Face", I have added a horizontal divider before the line "The Evening Views vendor outside Piccadilly Tube Station arranged his placard with some care." The scene change is a little jarring without it.
+
 If you are using US letter paper (8.5" x 11"), download the "Letter" folder containing the signatures and print them out, double-sided, flip on short side.
 
 If you are using A4 paper, download the "A4" folder containing the signatures and print them out, double-sided, flip on short side.
