@@ -1,4 +1,4 @@
-CW: Misogyny, discussion of capital punishment, domestic abuse, maritial infidelity, classism
+CW: Misogyny, discussion of capital punishment, domestic abuse, maritial infidelity, classism, adult man romances seventeen-year-old girl in backstory
 
 If you are using US letter (8.5" x 11") paper, download the signature files in the "Letter" folder and print out double-sided, flip on short side.
 
