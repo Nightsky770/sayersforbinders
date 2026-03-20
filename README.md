@@ -6,9 +6,9 @@ The legendary mystery novels of Dorothy L. Sayers for the DIY bookbinder.
 * _Lord Peter Views The Body_ (originally published 1928) is a collection of 12 short stories.
 * _Strong Poison_ (originally published 1930) introduces Harriet Vane, Peter's love interest, as she stands trial for the murder of her former lover.
 
-Please note that I have no plans to do _Unnatural Death_: too many damn n-words and appalling racist screeds. Yes, I am aware that they are from a character Sayers does not particularly like or invite us to sympathize with. Too much goddamn racism. (Also, as a queer person myself, I do not care for the queer-coded villain.)
+Please note that I have no plans to do _Unnatural Death_: too many damn n-words and appalling racist screeds. Yes, I am aware that they are from a character Sayers does not particularly like or invite us to sympathize with. Too much goddamn racism. 
 
-Text and illustrations are in the public domain in the United States.
+Except as noted, text and illustrations are in the public domain in the United States.
 
 Fonts used, to the best of my knowledge, are free to use for any purpose including commercial. Whatever original work of mine this effort represents, I place into the public domain. In other words, to the best of my knowledge you _may_ make and sell copies. I am not a lawyer and you are responsible for compliance with your government's copyright laws.
 
