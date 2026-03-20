@@ -4,8 +4,9 @@ The legendary mystery novels of Dorothy L. Sayers for the DIY bookbinder.
 * _Clouds of Witness_ (originally published 1926) chronicles Peter's attempt to defend his brother Gerald, who's accused of murdering their sister's fiance.
 * _The Unpleasantness at the Bellona Club_ (originally published 1928) sees Peter, himself a WWI vet, untangle a knotty issue at the Bellona Club, a private London club for war veterans.
 * _Lord Peter Views The Body_ (originally published 1928) is a collection of 12 short stories.
+* _Strong Poison_ (originally published 1930) introduces Harriet Vane, Peter's love interest, as she stands trial for the murder of her former lover.
 
-Please note that I have no plans to do _Unnatural Death_: too many damn n-words. Yes, I am aware that it is from a character Sayers does not particularly like or invite us to sympathize with. Too many n-words. (Also, as a queer person myself, I do not care for the queer-coded villain.) I _do_ plan to do _Strong Poison_, which is due to hit the public domain Jan. 1 2026.
+Please note that I have no plans to do _Unnatural Death_: too many damn n-words and appalling racist screeds. Yes, I am aware that they are from a character Sayers does not particularly like or invite us to sympathize with. Too much goddamn racism. (Also, as a queer person myself, I do not care for the queer-coded villain.)
 
 Text and illustrations are in the public domain in the United States.
 
