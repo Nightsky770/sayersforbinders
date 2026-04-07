@@ -1,0 +1,154 @@
+\PassOptionsToPackage{figuresright}{rotating} %because otherwise the maps are rotated towards the outside (i.e. in opposite directions), and IMHO one should only have to rotate a book once to read a single map on two facing pages
+\documentclass[
+paper=5.5in:8.5in,
+%a5paper,
+]{scrbook} % Document font size and paper size
+
+\title{Clouds of Witness}
+
+\usepackage[namedChapters]{bindery}
+\usepackage{dropcaps}
+\usepackage{illustrations}
+\usepackage{dialogue}
+\usepackage{epistolary}
+
+\setotherlanguage{french}
+
+\setdropcaps{Decocaps.ttf}
+
+\DeclareTOCStyleEntry[beforeskip=0.5em,linefill=\TOCLineLeaderFill]{chapter}{chapter}
+
+\hyphenation{Wim-sey}
+
+
+\begin{document}
+
+
+\frontmatter
+\pagestyle{empty}
+
+\includepdf[width=\basicwidth]{titlepage.jpg}
+
+
+
+\KOMAoptions{headings=openany}
+\begin{center}\setstretch{1.8}\scshape\bfseries
+{\Large The Solution of}\\
+%\vspace{0.5cm}
+{\Large The Riddlesdale Mystery}\\
+
+{\Large With}\\
+
+{\Large A Report}\\
+
+{\Large Of the Trial of}\\
+
+{\Large The Duke of Denver}\\
+
+{\Large Before the House of Lords}\\
+
+{\Large For}\\
+
+{\Large Murder}\\
+\end{center}
+\vfill
+\begin{quote}
+The inimitable stories of Tong-king never have any real ending, and this one, being in his most elevated style, has even less end than most of them. But the whole narrative is permeated with the odour of joss-sticks and honourable high-mindedness, and the two characters are both of noble birth.\\
+
+\workname{The Wallet of Kai-Lung}
+\end{quote}
+\clearpage
+\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+\tableofcontents
+
+\clearpage
+
+
+\begin{sidewaysfigure}
+\centering
+\includegraphics[width=0.9\columnwidth]{groundfloorlabeled}%
+\caption{Riddlesdale Lodge: Ground Floor}
+\addcontentsline{toc}{chapter}{Riddlesdale Lodge: Plan of ground floor}
+\end{sidewaysfigure}
+
+\clearpage
+
+\begin{sidewaysfigure}
+\centering
+\includegraphics[width=\columnwidth]{secondfloorlabeled}%
+\caption{Riddlesdale Lodge: Second Floor}
+\addcontentsline{toc}{chapter}{Riddlesdale Lodge: Plan of second floor}
+\end{sidewaysfigure}
+
+
+\mainmatter
+\pagestyle{headings}
+\renewcommand*{\chapterpagestyle}{plain}
+
+\typeout{Header font: \meaning\scr@fnt@pagehead}
+
+\KOMAoptions{headings=openright}
+\include{chapters/01.tex}
+\include{chapters/02.tex}
+\include{chapters/03.tex}
+\include{chapters/04.tex}
+\include{chapters/05.tex}
+\include{chapters/06.tex}
+\include{chapters/07.tex}
+\include{chapters/08.tex}
+\include{chapters/09.tex}
+\include{chapters/10.tex}
+\include{chapters/11.tex}
+\include{chapters/12.tex}
+\include{chapters/13.tex}
+\include{chapters/14.tex}
+\include{chapters/15.tex}
+\include{chapters/16.tex}
+\include{chapters/17.tex}
+\include{chapters/18.tex}
+\include{chapters/19.tex}
+
+\renewcommand*{\chapterheadendvskip}{\vspace{10pt}}
+\renewcommand*{\chapterheadstartvskip}{\vspace{0pt}}
+
+\clearpage
+\KOMAoptions{headings=openleft}
+\chapter*{Colophon}
+\centering
+\vfill
+\begin{minipage}{\textwidth}
+\textit{Clouds of Witness} was Dorothy L. Sayers' (1893--1957) second Lord~Peter Wimsey novel. It was originally published in 1926 by T.~Fisher Unwin in London (UK).
+\end{minipage}
+\vfill
+gutenberg.org/ebooks/70432
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+Text is set in <EB Garamond>, Georg Mayr-Duffner's free and open source implementation of Claude Garamond’s famous humanist typefaces from the mid-sixteenth century. Title page is set in <Seaside Resort>, by Nick Curtis, based on a 1933 poster by Italy’s Bertarelli Studios. Chapter dropcaps are set in <Deco Caps>, by Petra Heidorn.
+\end{minipage}
+\vfill
+github.com/georgd/EB-Garamond\\
+nicksfonts.com\\
+fontspace.com/cybapee-creations
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+Title page illustration is cropped from <Le Départ au Casino>, a 1923 painting by French artist George Barbier (1882--1932). The original is held by the Rijksmuseum in Amsterdam.
+\end{minipage}
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+\begin{minipage}{\textwidth}
+This typeset is dedicated to the public domain under a Creative Commons CC0 1.0 Universal deed: creativecommons.org/publicdomain/zero/1.0/
+\end{minipage}
+\vfill
+\rule{0.5\textwidth}{.4pt}
+\vfill
+Typeset in \LaTeX{}. Last updated \today.
+
+\thispagestyle{empty}
+\end{document}
